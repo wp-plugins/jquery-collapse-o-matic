@@ -1,4 +1,4 @@
-span.collapse {
+span.collapseomatic {
 	background-image:url(images/collapse-arrows.png) !important;
 	background-repeat:no-repeat;
 	padding: 0 0 10px 16px;
@@ -7,7 +7,7 @@ span.collapse {
 span.close {
 	background-position: 0 -33px !important;
 }
-.collapse_content {
+.collapseomatic_content {
 	display: none;
 	margin-top: 3px;
 	margin-left: 16px;

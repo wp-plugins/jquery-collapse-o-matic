@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://www.twinpictures.de/collapse/
 Description: Collapseable Objects using jQuery.
-Version: 1.0
+Version: 1.1
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -30,32 +30,31 @@ wp_enqueue_script('jquery');
 $plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 if (!is_admin()){
                 //collapse script
-                wp_register_script('collapse-js', $plugin_url.'/collapse.js', array ('jquery'), '1.0' );
-                wp_enqueue_script('collapse-js');
+                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.0' );
+                wp_enqueue_script('collapseomatic-js');
 	
 	//css
-	wp_register_style( 'collapse-css', $plugin_url.'/style.css', array (), '1.0' );    
-                wp_enqueue_style( 'collapse-css' );
+	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.0' );    
+                wp_enqueue_style( 'collapseomatic-css' );
 }
         
 
-function collapsTronic($tag){
+function collapsTronic($atts, $content=null){
+    //find a random number, incase there is no id assigned
 	$ran = rand(1, 10000);
-	global $r;
-		
-	while(in_array($ran, $r))
-		$ran = rand(1, 10000);
 	
-	$r[] = $ran;
-	$link = "<span class=\"collapse\" title=\"$ran\">$tag[1]</span>";
-	$eDiv = "<div id=\"$ran\" style=\"display:none;\" class=\"collapse_content\">$tag[2] </div>";
+	extract(shortcode_atts(array(
+		'title' => '',
+		'id' => $ran,
+	), $atts));
+                
+	$link = "<span class=\"collapseomatic\" title=\"".$title."\" id=\"".$id."\">".$title."</span>";
+	$eDiv = "<div id=\"target-".$id."\" style=\"display:none;\" class=\"collapseomatic_content\">".do_shortcode($content)."</div>";
 	return $link . $eDiv;
 }
 
-function cfilter($body){
-	return preg_replace_callback("/\[expand title=([^\[]*)\]([^\[]*)\[\/expand\]/", "collapsTronic", $body);
-}
+add_shortcode('expand', 'collapsTronic');
 
-$r = array();
-add_filter('the_content','cfilter');
+//add the filter to the sidebar widgets
+add_filter('widget_text', 'do_shortcode');
 ?>
