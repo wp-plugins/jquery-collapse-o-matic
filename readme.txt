@@ -26,12 +26,12 @@ Collapse-O-Matic adds an `[expand title="title" id="id"]content[/expand]` shortc
 == Frequently Asked Questions ==
 
 = How dose one use the shortcode, exactly? =
-'[expand title="title goes here" id="optional-id-goes-here"]this is where content, including other shortcodes, goes.[/expand]'
+[expand title="title goes here" id="optional-id-goes-here"]this is where content, including other shortcodes, goes.[/expand]
 
 = Can one of the expands auto-expand based on an anchor tag in the url? =
 Yes, just do this:
-1. Give the expand a specific id in the short code: '[expand title="title goes here" id="monkey"]this is where content, including other shortcodes, goes.[/expand]'
-1. Use the id as and anchor in the URL: http://www.twinpictures.de/your-page/#monkey
+* Give the expand a specific id in the short code: [expand title="title goes here" id="monkey"]this is where content, including other shortcodes, goes.[/expand]
+* Use the id as and anchor in the URL: http://www.twinpictures.de/your-page/#monkey
 
 = Is Galato the same as Ice Cream? =
 No. Not even close.
