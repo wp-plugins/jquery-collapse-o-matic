@@ -4,14 +4,14 @@ Contributors: Twinpictures, DrLebowski
 Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.7
-Tested up to: 3.0.1
-Stable tag: 1.0
+Tested up to: 3.0.2
+Stable tag: 1.1
 
-Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content into a lovely jQuery collapsible div.
+Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content into a lovely jQuery collapsible div.  This plugin is an advanced version of--and inspired by--DrLebowski's Collapsing Objects.
+Collapse-O-Matic adds an `[expand title="title" id="id"]content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery collapsible div.  This plugin is a more advanced version of--and inspired by--DrLebowski's Collapsing Objects.
 
 == Installation ==
 
@@ -25,8 +25,15 @@ Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content i
 
 == Frequently Asked Questions ==
 
-= Is Galato the same as Ice Cream? =
+= How dose one use the shortcode, exactly? =
+'[expand title="title goes here" id="optional-id-goes-here"]this is where content, including other shortcodes, goes.[/expand]'
 
+= Can one of the expands auto-expand based on an anchor tag in the url? =
+Yes, just do this:
+1. Give the expand a specific id in the short code: '[expand title="title goes here" id="monkey"]this is where content, including other shortcodes, goes.[/expand]'
+1. Use the id as and anchor in the URL: http://www.twinpictures.de/your-page/#monkey
+
+= Is Galato the same as Ice Cream? =
 No. Not even close.
 
 == Screenshots ==
@@ -36,10 +43,20 @@ No. Not even close.
 
 == Changelog ==
 
+= 1.1 =
+* Optimized Code
+* Shortcode now works in Sidebar
+* Expand Titles now have title tags that match the title, not just some random number
+* Shorcode can include a user-defined ID instead of a generated random number
+* Added auto expand feature if an anchor tag is used in the URL
+
 = 1.0 =
 * The plugin came to be.
 
 == Upgrade Notice ==
+
+= 1.1 =
+Shortcode now works in sidebars.  Shorcode must be written as `[expand title="title goes here" id="optional-id-goes-here"]content goes here[/expand]`.
 
 = 1.0 =
 Where once there was not, there now is.
