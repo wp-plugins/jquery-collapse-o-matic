@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://www.twinpictures.de/collapse/
 Description: Collapseable Objects using jQuery.
-Version: 1.1
+Version: 1.2
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -46,9 +46,10 @@ function collapsTronic($atts, $content=null){
 	extract(shortcode_atts(array(
 		'title' => '',
 		'id' => $ran,
+		'tag' => 'span',
 	), $atts));
                 
-	$link = "<span class=\"collapseomatic\" title=\"".$title."\" id=\"".$id."\">".$title."</span>";
+	$link = "<".$tag." class=\"collapseomatic\" title=\"".$title."\" id=\"".$id."\">".$title."</".$tag.">";
 	$eDiv = "<div id=\"target-".$id."\" style=\"display:none;\" class=\"collapseomatic_content\">".do_shortcode($content)."</div>";
 	return $link . $eDiv;
 }
