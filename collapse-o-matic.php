@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: jQuery Collapse-O-Matic
-Plugin URI: http://www.twinpictures.de/collapse/
-Description: Collapseable Objects using jQuery.
-Version: 1.2
+Plugin URI: http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
+Description: Collapse-O-Matic adds an `[expand]` shortcode that wraps content into a lovely, jQuery collapsible div.
+Version: 1.3
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -30,11 +30,11 @@ wp_enqueue_script('jquery');
 $plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 if (!is_admin()){
                 //collapse script
-                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.0' );
+                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.1' );
                 wp_enqueue_script('collapseomatic-js');
 	
 	//css
-	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.0' );    
+	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.1' );    
                 wp_enqueue_style( 'collapseomatic-css' );
 }
         
@@ -45,12 +45,32 @@ function collapsTronic($atts, $content=null){
 	
 	extract(shortcode_atts(array(
 		'title' => '',
+		'alt' => '',
 		'id' => $ran,
 		'tag' => 'span',
+		'trigclass' => '',
+		'targclass' => '',
+		'rel' => ''
 	), $atts));
-                
-	$link = "<".$tag." class=\"collapseomatic\" title=\"".$title."\" id=\"".$id."\">".$title."</".$tag.">";
-	$eDiv = "<div id=\"target-".$id."\" style=\"display:none;\" class=\"collapseomatic_content\">".do_shortcode($content)."</div>";
+	
+	$altatt = '';
+	if($alt){
+		$altatt = 'alt="'.$alt.'"';
+	}
+	
+	$relatt = '';
+	if($rel){
+		$relatt = 'rel="'.$rel.'"';
+	}
+	$link = '<'.$tag.' class="collapseomatic '.$trigclass.'" title="';
+	if($alt){
+		$link .= $alt;
+	}
+	else{
+		$link .= $title;
+	}
+	$link .= '" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$title.'</'.$tag.'>';
+	$eDiv = '<div id="target-'.$id.'" style="display:none;" class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	return $link . $eDiv;
 }
 

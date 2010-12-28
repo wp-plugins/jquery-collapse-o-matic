@@ -3,15 +3,15 @@
 Contributors: Twinpictures, DrLebowski
 Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
-Requires at least: 2.7
-Tested up to: 3.0.2
-Stable tag: 1.2
+Requires at least: 2.8
+Tested up to: 3.1
+Stable tag: 1.3
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="title" id="optional-id" tag="optional-span"]content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery collapsible div.  This plugin is a more advanced version of--and inspired by--DrLebowski's Collapsing Objects.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery collapsible div.  A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> and attribute demos are available. This plugin was inspired by DrLebowski's Collapsing Objects.
 
 == Installation ==
 
@@ -25,13 +25,8 @@ Collapse-O-Matic adds an `[expand title="title" id="optional-id" tag="optional-s
 
 == Frequently Asked Questions ==
 
-= How dose one use the shortcode, exactly? =
-[expand title="title goes here" id="optional-id-goes-here" tag="optional-html-tag-goes-here"]this is where content, including other shortcodes, goes.[/expand]
-
-= Can one of the expands auto-expand based on an anchor tag in the url? =
-Yes, just do this:
-* Give the expand a specific id in the short code: [expand title="title goes here" id="monkey"]this is where content, including other shortcodes, goes.[/expand]
-* Use the id as and anchor in the URL: http://www.twinpictures.de/your-page/#monkey
+= How does one use the shortcode, exactly? =
+A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> has been provided to answer this exact question.
 
 = Is Galato the same as Ice Cream? =
 No. Not even close.
@@ -42,6 +37,11 @@ No. Not even close.
 2. screenshot-2.png Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3 =
+* Added the rel attribute to deal with grouping collpase elements.
+* Added the trigclass and targclass attributes.
+* Added the alt attribute to define the title's hover-over text.
 
 = 1.2 =
 * Expanded the shortcode to include an optional tag attribute.  The system defaults to wrapping the trigger in a span tag.
@@ -59,6 +59,9 @@ No. Not even close.
 * The plugin came to be.
 
 == Upgrade Notice ==
+
+= 1.3 =
+Collapse-O-Matic has been significantly advanced.  Elements can now be grouped together.
 
 = 1.2 =
 Style has been updated for ultimate flexibility.  Shorcode can now be written as `[expand title="title goes here" id="optional-id-goes-here" tag="optional-html-tag-goes-here"]content goes here[/expand]`.
