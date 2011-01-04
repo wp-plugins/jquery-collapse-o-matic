@@ -25,6 +25,14 @@
  */
 
 jQuery(document).ready(function() {
+    jQuery('.collapseomatic').hover(function () {
+            jQuery(this).addClass("hover");
+        },
+        function () {
+            jQuery(this).removeClass("hover");
+        }
+    );
+    
     jQuery('.collapseomatic').click(function() {
 		//alert('phones ringin dude');
 		jQuery(this).toggleClass('close');

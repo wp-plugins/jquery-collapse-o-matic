@@ -4,6 +4,9 @@
 	padding: 0 0 10px 16px;
 	cursor: pointer;
 }
+.hover {
+	text-decoration: underline;
+}
 .close {
 	background-image:url(images/arrow-up.png) !important;
 }

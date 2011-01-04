@@ -5,7 +5,7 @@ Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -21,7 +21,7 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Test that the this plugin meets your demanding needs.
 1. Tweek the CSS to match your flavor.
 1. Rate the plugin and verify if it works at wordpress.org.
-1. Leave a comment regarding bugs, feature request, cocktail recipes at http://www.twinpictures.de/collapse-o-matic/
+1. Leave a comment regarding bugs, feature request, cocktail recipes at http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
 
 == Frequently Asked Questions ==
 
@@ -37,6 +37,9 @@ No. Not even close.
 2. screenshot-2.png Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.1 =
+* Added the hover style to pimp the element style when moused over.
 
 = 1.3 =
 * Added the rel attribute to deal with grouping collpase elements.
@@ -59,6 +62,9 @@ No. Not even close.
 * The plugin came to be.
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+Hover style added.
 
 = 1.3 =
 Collapse-O-Matic has been significantly advanced.  Elements can now be grouped together.
