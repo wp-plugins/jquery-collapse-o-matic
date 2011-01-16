@@ -1,14 +1,21 @@
-span.collapse {
-	background-image:url(images/collapse-arrows.png) !important;
-	background-repeat:no-repeat;
+.collapseomatic {
+	background-image: url(images/arrow-down.png) !important;
+	background-repeat: no-repeat;
 	padding: 0 0 10px 16px;
 	cursor: pointer;
 }
-span.close {
-	background-position: 0 -33px !important;
+.arrowright {
+	background-position: top right;
+	padding: 0 16px 10px 0;
 }
-.collapse_content {
-	display: none;
+.hover {
+	text-decoration: underline;
+}
+.close {
+	background-image: url(images/arrow-up.png) !important;
+}
+.collapseomatic_content {
 	margin-top: 3px;
 	margin-left: 16px;
+	padding-bottom: 1px;
 }

@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: jQuery Collapse-O-Matic
-Plugin URI: http://www.twinpictures.de/collapse/
-Description: Collapseable Objects using jQuery.
-Version: 1.0
+Plugin URI: http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
+Description: Collapse-O-Matic adds an `[expand]` shortcode that wraps content into a lovely, jQuery collapsible div.
+Version: 1.3.2
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
 */
 
-/*  Copyright 2010 Twinpictures (www.twinpictures.de)
+/*  Copyright 2011 Twinpictures (www.twinpictures.de)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -30,32 +30,58 @@ wp_enqueue_script('jquery');
 $plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 if (!is_admin()){
                 //collapse script
-                wp_register_script('collapse-js', $plugin_url.'/collapse.js', array ('jquery'), '1.0' );
-                wp_enqueue_script('collapse-js');
+                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.1' );
+                wp_enqueue_script('collapseomatic-js');
 	
 	//css
-	wp_register_style( 'collapse-css', $plugin_url.'/style.css', array (), '1.0' );    
-                wp_enqueue_style( 'collapse-css' );
+	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.1' );    
+                wp_enqueue_style( 'collapseomatic-css' );
 }
         
 
-function collapsTronic($tag){
+function collapsTronic($atts, $content=null){
+    //find a random number, incase there is no id assigned
 	$ran = rand(1, 10000);
-	global $r;
-		
-	while(in_array($ran, $r))
-		$ran = rand(1, 10000);
 	
-	$r[] = $ran;
-	$link = "<span class=\"collapse\" title=\"$ran\">$tag[1]</span>";
-	$eDiv = "<div id=\"$ran\" style=\"display:none;\" class=\"collapse_content\">$tag[2] </div>";
+	extract(shortcode_atts(array(
+		'title' => '',
+		'alt' => '',
+		'id' => $ran,
+		'tag' => 'span',
+		'trigclass' => '',
+		'targclass' => '',
+		'rel' => '',
+		'expanded' => '',
+	), $atts));
+	
+	$altatt = '';
+	if($alt){
+		$altatt = 'alt="'.$alt.'"';
+	}
+	
+	$relatt = '';
+	if($rel){
+		$relatt = 'rel="'.$rel.'"';
+	}
+	$hstyle = 'style="display:none;"';
+	if($expanded){
+		$trigclass .= ' close';
+		$hstyle = '';
+	}
+	$link = '<'.$tag.' class="collapseomatic '.$trigclass.'" title="';
+	if($alt){
+		$link .= $alt;
+	}
+	else{
+		$link .= $title;
+	}
+	$link .= '" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$title.'</'.$tag.'>';
+	$eDiv = '<div id="target-'.$id.'" '.$hstyle.' class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	return $link . $eDiv;
 }
 
-function cfilter($body){
-	return preg_replace_callback("/\[expand title=([^\[]*)\]([^\[]*)\[\/expand\]/", "collapsTronic", $body);
-}
+add_shortcode('expand', 'collapsTronic');
 
-$r = array();
-add_filter('the_content','cfilter');
+//add the filter to the sidebar widgets
+add_filter('widget_text', 'do_shortcode');
 ?>
