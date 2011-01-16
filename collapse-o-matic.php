@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
 Description: Collapse-O-Matic adds an `[expand]` shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.3.1
+Version: 1.3.2
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -50,7 +50,8 @@ function collapsTronic($atts, $content=null){
 		'tag' => 'span',
 		'trigclass' => '',
 		'targclass' => '',
-		'rel' => ''
+		'rel' => '',
+		'expanded' => '',
 	), $atts));
 	
 	$altatt = '';
@@ -62,6 +63,11 @@ function collapsTronic($atts, $content=null){
 	if($rel){
 		$relatt = 'rel="'.$rel.'"';
 	}
+	$hstyle = 'style="display:none;"';
+	if($expanded){
+		$trigclass .= ' close';
+		$hstyle = '';
+	}
 	$link = '<'.$tag.' class="collapseomatic '.$trigclass.'" title="';
 	if($alt){
 		$link .= $alt;
@@ -70,7 +76,7 @@ function collapsTronic($atts, $content=null){
 		$link .= $title;
 	}
 	$link .= '" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$title.'</'.$tag.'>';
-	$eDiv = '<div id="target-'.$id.'" style="display:none;" class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
+	$eDiv = '<div id="target-'.$id.'" '.$hstyle.' class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	return $link . $eDiv;
 }
 

@@ -5,7 +5,7 @@ Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -19,11 +19,17 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Activate the Plugin
 1. Add a the shortcode to your post like so: `[expand title=Displayed Title Goes Here]Hidden content goes here[/expand]`
 1. Test that the this plugin meets your demanding needs.
-1. Tweek the CSS to match your flavor.
+1. Tweak the CSS to match your flavor.
 1. Rate the plugin and verify if it works at wordpress.org.
 1. Leave a comment regarding bugs, feature request, cocktail recipes at http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
 
 == Frequently Asked Questions ==
+
+= I am a Social Netwookiee, do you have a Facebook page? =
+Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
+
+= Does Twinpictures do the Twiter? =
+Ah yes! <a href='twitter.com/switzerbaden'>@SwitzerBaden at Twitter</a> does the tweeting around here.
 
 = How does one use the shortcode, exactly? =
 A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> has been provided to answer this exact question.
