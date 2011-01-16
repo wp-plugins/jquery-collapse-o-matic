@@ -39,8 +39,8 @@ No. Not even close.
 
 == Screenshots ==
 
-1. screenshot-1.png Hmmm.. wonder what happens this text by that arrow is clicked?
-2. screenshot-2.png Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
+1. Hmmm.. wonder what happens this text by that arrow is clicked?
+2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
 
