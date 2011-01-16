@@ -44,6 +44,10 @@ No. Not even close.
 
 == Changelog ==
 
+= 1.3.2 =
+* Added Expanded attribute that sets the default positon expanded open.
+* Added style that moves arrows to the right of the text.
+
 = 1.3.1 =
 * Added the hover style to pimp the element style when moused over.
 
@@ -68,6 +72,9 @@ No. Not even close.
 * The plugin came to be.
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+Expanded attribute and right arrow style added.
 
 = 1.3.1 =
 Hover style added.
