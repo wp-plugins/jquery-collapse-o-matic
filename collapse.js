@@ -1,8 +1,8 @@
 /*!
- * jQuery Collapse-O-Matic v1.1
+ * jQuery Collapse-O-Matic v1.2.1
  * http://www.twinpictures.de/collapse-o-matic/
  *
- * Copyright 2010, Twinpictures
+ * Copyright 2011, Twinpictures
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,18 +44,37 @@ jQuery(document).ready(function() {
         //deal with grouped items if needed
         if(jQuery(this).attr('rel') !== undefined){
             var rel = jQuery(this).attr('rel');
-            closeOthers(rel);
+	    if(rel.indexOf('-highlander') != '-1'){
+		closeOtherMembers(rel, id);
+	    }
+            else{
+		closeOtherGroups(rel);
+	    }
+	    
         }
         
 	});
     
-    function closeOthers(rel){
+    function closeOtherGroups(rel){
         jQuery('.collapseomatic[rel!="' + rel +'"]').each(function(index) {
             //add close class if open
             if(jQuery(this).hasClass('close') && jQuery(this).attr('rel') !== undefined){                
                 jQuery(this).removeClass('close');
                 var id = jQuery(this).attr('id');
                 jQuery('#target-'+id).slideToggle('fast', function() {
+                    // Animation complete.
+                });
+            }
+        });
+    }
+    
+    function closeOtherMembers(rel, id){
+        jQuery('.collapseomatic[rel="' + rel +'"]').each(function(index) {
+            //add close class if open
+            if(jQuery(this).attr('id') != id && jQuery(this).hasClass('close') && jQuery(this).attr('rel') !== undefined){                
+                jQuery(this).removeClass('close');
+                var thisid = jQuery(this).attr('id');
+                jQuery('#target-'+thisid).slideToggle('fast', function() {
                     // Animation complete.
                 });
             }
