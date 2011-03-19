@@ -1,0 +1,21 @@
+.collapseomatic {
+	background-image: url(images/arrow-down.png) !important;
+	background-repeat: no-repeat;
+	padding: 0 0 10px 16px;
+	cursor: pointer;
+}
+.arrowright {
+	background-position: top right;
+	padding: 0 16px 10px 0;
+}
+.hover {
+	text-decoration: underline;
+}
+.close {
+	background-image: url(images/arrow-up.png) !important;
+}
+.collapseomatic_content {
+	margin-top: 3px;
+	margin-left: 16px;
+	padding-bottom: 1px;
+}
