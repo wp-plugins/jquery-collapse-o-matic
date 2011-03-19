@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.2
+ * jQuery Collapse-O-Matic v1.2.1
  * http://www.twinpictures.de/collapse-o-matic/
  *
  * Copyright 2011, Twinpictures
@@ -44,7 +44,7 @@ jQuery(document).ready(function() {
         //deal with grouped items if needed
         if(jQuery(this).attr('rel') !== undefined){
             var rel = jQuery(this).attr('rel');
-	    if(rel.indexOf('-member') != '-1'){
+	    if(rel.indexOf('-highlander') != '-1'){
 		closeOtherMembers(rel, id);
 	    }
             else{
