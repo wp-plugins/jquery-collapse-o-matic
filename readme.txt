@@ -5,7 +5,7 @@ Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.3 =
+* Added the ability to have only one member of a group expanded by ading '-member' to the rel attribute value. 
 
 = 1.3.2 =
 * Added Expanded attribute that sets the default positon expanded open.
