@@ -44,6 +44,9 @@ No. Not even close.
 
 == Changelog ==
 
+= 1.3.4 =
+* Changed '-member' to '-highlander' because it sounds better. 
+
 = 1.3.3 =
 * Added the ability to have only one member of a group expanded by ading '-member' to the rel attribute value. 
 
@@ -75,6 +78,12 @@ No. Not even close.
 * The plugin came to be.
 
 == Upgrade Notice ==
+
+= 1.3.4 =
+Changed highlander grouping trigger from -member to -highlander.
+
+= 1.3.3 =
+Added highlander grouping... called it -member.
 
 = 1.3.2 =
 Expanded attribute and right arrow style added.
