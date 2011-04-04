@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
 Description: Collapse-O-Matic adds an `[expand]` shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.3.5
+Version: 1.3.6
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -30,11 +30,11 @@ wp_enqueue_script('jquery');
 $plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 if (!is_admin()){
                 //collapse script
-                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.2.1' );
+                wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.2.2' );
                 wp_enqueue_script('collapseomatic-js');
 	
 	//css
-	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.1' );    
+	wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.2' );    
                 wp_enqueue_style( 'collapseomatic-css' );
 }
         
@@ -45,6 +45,7 @@ function collapsTronic($atts, $content=null){
 	
 	extract(shortcode_atts(array(
 		'title' => '',
+		'swaptitle' => '',
 		'alt' => '',
 		'id' => 'id'.$ran,
 		'tag' => 'span',
@@ -58,25 +59,22 @@ function collapsTronic($atts, $content=null){
 	if($alt){
 		$altatt = 'alt="'.$alt.'"';
 	}
-	
 	$relatt = '';
 	if($rel){
 		$relatt = 'rel="'.$rel.'"';
 	}
-	$hstyle = 'style="display:none;"';
 	if($expanded){
 		$trigclass .= ' close';
-		$hstyle = '';
 	}
 	$link = '<'.$tag.' class="collapseomatic '.$trigclass.'" title="';
-	if($alt){
-		$link .= $alt;
+	if($swaptitle){
+		$link .= $swaptitle;
 	}
 	else{
 		$link .= $title;
 	}
 	$link .= '" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$title.'</'.$tag.'>';
-	$eDiv = '<div id="target-'.$id.'" '.$hstyle.' class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
+	$eDiv = '<div id="target-'.$id.'" class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	return $link . $eDiv;
 }
 

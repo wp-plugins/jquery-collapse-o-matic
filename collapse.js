@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.2.1
+ * jQuery Collapse-O-Matic v1.2.2
  * http://www.twinpictures.de/collapse-o-matic/
  *
  * Copyright 2011, Twinpictures
@@ -25,6 +25,13 @@
  */
 
 jQuery(document).ready(function() {
+    
+    //inital collapse
+    jQuery('.collapseomatic:not(.close)').each(function(index) {
+	    var thisid = jQuery(this).attr('id');
+	    jQuery('#target-'+thisid).css('display', 'none');
+    });
+    
     jQuery('.collapseomatic').hover(function () {
             jQuery(this).addClass("hover");
         },
@@ -34,12 +41,19 @@ jQuery(document).ready(function() {
     );
     
     jQuery('.collapseomatic').click(function() {
-		//alert('phones ringin dude');
-		jQuery(this).toggleClass('close');
-		var id = jQuery(this).attr('id');
-		jQuery('#target-'+id).slideToggle('fast', function() {
-		    // Animation complete.
-		});
+	//alert('phones ringin dude');
+	jQuery(this).toggleClass('close');
+	//check if the title needs to be swapped out
+	var title = jQuery(this).attr('title');
+	var htmlstr = jQuery(this).html();
+	if(title != htmlstr){
+	    jQuery(this).attr('title', htmlstr);
+	    jQuery(this).html(title);
+	}
+	var id = jQuery(this).attr('id');
+	jQuery('#target-'+id).slideToggle('fast', function() {
+	    // Animation complete.
+	});
         
         //deal with grouped items if needed
         if(jQuery(this).attr('rel') !== undefined){
@@ -49,11 +63,9 @@ jQuery(document).ready(function() {
 	    }
             else{
 		closeOtherGroups(rel);
-	    }
-	    
+	    }   
         }
-        
-	});
+    });
     
     function closeOtherGroups(rel){
         jQuery('.collapseomatic[rel!="' + rel +'"]').each(function(index) {
