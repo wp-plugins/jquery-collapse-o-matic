@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.2.2
+ * jQuery Collapse-O-Matic v1.2.3
  * http://www.twinpictures.de/collapse-o-matic/
  *
  * Copyright 2011, Twinpictures
@@ -99,4 +99,24 @@ jQuery(document).ready(function() {
         var myAnchor = '#' + myFile.split('#')[1];
         jQuery(myAnchor).click();
     }
+    
+    jQuery('.expandall').click(function() {
+	jQuery('.collapseomatic:not(.close)').each(function(index) {	              
+	    jQuery(this).addClass('close');
+	    var thisid = jQuery(this).attr('id');
+	    jQuery('#target-'+thisid).slideToggle('fast', function() {
+		// Animation complete.
+	    });
+	});
+    });
+    
+    jQuery('.collapseall').click(function() {
+	jQuery('.collapseomatic.close').each(function(index) {	                 
+	    jQuery(this).removeClass('close');
+	    var thisid = jQuery(this).attr('id');
+	    jQuery('#target-'+thisid).slideToggle('fast', function() {
+		// Animation complete.
+	    });
+	});
+    });
 });

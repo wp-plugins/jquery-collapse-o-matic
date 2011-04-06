@@ -19,3 +19,11 @@
 	margin-left: 16px;
 	padding: 0px;
 }
+
+.collapseall, .expandall {
+	cursor: pointer;
+}
+
+.collapseall:hover, .expandall:hover {
+	text-decoration: underline;
+}
