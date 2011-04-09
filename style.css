@@ -15,7 +15,15 @@
 	background-image: url(images/arrow-up.png) !important;
 }
 .collapseomatic_content {
-	margin-top: 3px;
+	margin-top: 0px;
 	margin-left: 16px;
-	padding-bottom: 1px;
+	padding: 0px;
+}
+
+.collapseall, .expandall {
+	cursor: pointer;
+}
+
+.collapseall:hover, .expandall:hover {
+	text-decoration: underline;
 }
