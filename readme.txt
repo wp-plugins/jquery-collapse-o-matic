@@ -5,7 +5,7 @@ Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
 Tested up to: 3.1
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.8 =
+* Expand elements contnaining content with one empty space will no longer insert empty target elements.
 
 = 1.3.7 =
 * Added expandsub1 - expandsub3 shortcodes for nested expand elements.
@@ -89,8 +92,11 @@ No. Not even close.
 * The plugin came to be.
 
 == Upgrade Notice ==
+= 1.3.8 =
+Expand elements that have content containing only one space will not insert target elements.
+
 = 1.3.7 =
-* New expandsub1 - expandsub3 shortcodes for nested expand elements.  Collapse/Expand all triggers.  Improved arrow icons.
+New expandsub1 - expandsub3 shortcodes for nested expand elements.  Collapse/Expand all triggers.  Improved arrow icons.
 
 = 1.3.6 =
 Plugin degrades gracefully when JS is disabled. Title can now have expand/collapse states using swaptitle attribute.
