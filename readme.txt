@@ -1,11 +1,11 @@
-=== jQuery Collapse-O-Matic ===
+﻿=== jQuery Collapse-O-Matic ===
 
-Contributors: Twinpictures, DrLebowski
+Contributors: Twinpictures
 Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
-Tested up to: 3.1
-Stable tag: 1.3.8
+Tested up to: 3.2
+Stable tag: 1.3.9
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -28,8 +28,8 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 = I am a Social Netwookiee, do you have a Facebook page? =
 Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
 
-= Does Twinpictures do the Twiter? =
-Ah yes! <a href='twitter.com/switzerbaden'>@SwitzerBaden at Twitter</a> does the tweeting around here.
+= Does Twinpictures do the Twitter? =
+Ah yes! <a href='twitter.com/twinpictures'>@Twinpictures</a> does the twitter tweeting around here.
 
 = How does one use the shortcode, exactly? =
 A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> has been provided to answer this exact question.
@@ -45,7 +45,11 @@ No. Not even close.
 == Changelog ==
 
 = 1.3.8 =
-* Expand elements contnaining content with one empty space will no longer insert empty target elements.
+* Swaptitle will not be triggered if either <img> or <cufon> tags are used in trigger titles
+* Added rel grouping to the collapseall/expandall tirggers to target only elements of a single group.
+
+= 1.3.8 =
+* Expand elements containing content with one empty space will no longer insert empty target elements.
 
 = 1.3.7 =
 * Added expandsub1 - expandsub3 shortcodes for nested expand elements.
@@ -62,10 +66,10 @@ No. Not even close.
 * Changed '-member' to '-highlander' because it sounds better. 
 
 = 1.3.3 =
-* Added the ability to have only one member of a group expanded by ading '-member' to the rel attribute value. 
+* Added the ability to have only one member of a group expanded by adding '-member' to the rel attribute value. 
 
 = 1.3.2 =
-* Added Expanded attribute that sets the default positon expanded open.
+* Added Expanded attribute that sets the default position expanded open.
 * Added style that moves arrows to the right of the text.
 
 = 1.3.1 =
@@ -79,13 +83,13 @@ No. Not even close.
 = 1.2 =
 * Expanded the shortcode to include an optional tag attribute.  The system defaults to wrapping the trigger in a span tag.
 * Style will support various element tags... span, div, h1, h2... etc.
-* Style seperates the arrow icons, so there is no background bleed-over on extra-long trigger titles.
+* Style separates the arrow icons, so there is no background bleed-over on extra-long trigger titles.
 
 = 1.1 =
 * Optimized Code
 * Shortcode now works in Sidebar
 * Expand Titles now have title tags that match the title, not just some random number
-* Shorcode can include a user-defined ID instead of a generated random number
+* Shortcode can include a user-defined ID instead of a generated random number
 * Added auto expand feature if an anchor tag is used in the URL
 
 = 1.0 =
@@ -120,10 +124,10 @@ Hover style added.
 Collapse-O-Matic has been significantly advanced.  Elements can now be grouped together.
 
 = 1.2 =
-Style has been updated for ultimate flexibility.  Shorcode can now be written as `[expand title="title goes here" id="optional-id-goes-here" tag="optional-html-tag-goes-here"]content goes here[/expand]`.
+Style has been updated for ultimate flexibility.  Shortcode can now be written as `[expand title="title goes here" id="optional-id-goes-here" tag="optional-html-tag-goes-here"]content goes here[/expand]`.
 
 = 1.1 =
-Shortcode now works in sidebars.  Shorcode must be written as `[expand title="title goes here" id="optional-id-goes-here"]content goes here[/expand]`.
+Shortcode now works in sidebars.  Shortcode must be written as `[expand title="title goes here" id="optional-id-goes-here"]content goes here[/expand]`.
 
 = 1.0 =
 Where once there was not, there now is.

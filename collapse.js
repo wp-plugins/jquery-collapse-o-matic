@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.2.3
+ * jQuery Collapse-O-Matic v1.2.4
  * http://www.twinpictures.de/collapse-o-matic/
  *
  * Copyright 2011, Twinpictures
@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
 	//check if the title needs to be swapped out
 	var title = jQuery(this).attr('title');
 	var htmlstr = jQuery(this).html();
-	if(title != htmlstr){
+	if(title != htmlstr && htmlstr.indexOf("<img") == -1 && htmlstr.indexOf("<cufon") == -1){
 	    jQuery(this).attr('title', htmlstr);
 	    jQuery(this).html(title);
 	}
@@ -101,22 +101,46 @@ jQuery(document).ready(function() {
     }
     
     jQuery('.expandall').click(function() {
-	jQuery('.collapseomatic:not(.close)').each(function(index) {	              
-	    jQuery(this).addClass('close');
-	    var thisid = jQuery(this).attr('id');
-	    jQuery('#target-'+thisid).slideToggle('fast', function() {
-		// Animation complete.
-	    });
-	});
+		if(jQuery(this).attr('rel') !== undefined){
+			var rel = jQuery(this).attr('rel');
+			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.close)').each(function(index) {
+					jQuery(this).addClass('close');
+					var thisid = jQuery(this).attr('id');
+					jQuery('#target-'+thisid).slideToggle('fast', function() {
+						// Animation complete.
+					});
+			});
+	    }
+		else{
+			jQuery('.collapseomatic:not(.close)').each(function(index) {
+				jQuery(this).addClass('close');
+				var thisid = jQuery(this).attr('id');
+				jQuery('#target-'+thisid).slideToggle('fast', function() {
+				// Animation complete.
+				});
+			});
+		}
     });
     
     jQuery('.collapseall').click(function() {
-	jQuery('.collapseomatic.close').each(function(index) {	                 
-	    jQuery(this).removeClass('close');
-	    var thisid = jQuery(this).attr('id');
-	    jQuery('#target-'+thisid).slideToggle('fast', function() {
-		// Animation complete.
-	    });
-	});
+		if(jQuery(this).attr('rel') !== undefined){
+			var rel = jQuery(this).attr('rel');
+			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.close').each(function(index) {
+				jQuery(this).removeClass('close');
+				var thisid = jQuery(this).attr('id');
+				jQuery('#target-'+thisid).slideToggle('fast', function() {
+					// Animation complete.
+				});
+			});
+		}
+		else{
+			jQuery('.collapseomatic.close').each(function(index) {	                 
+				jQuery(this).removeClass('close');
+				var thisid = jQuery(this).attr('id');
+				jQuery('#target-'+thisid).slideToggle('fast', function() {
+				// Animation complete.
+				});
+			});
+		}
     });
 });
