@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
 Description: Collapse-O-Matic adds an `[expand]` shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.3.10
+Version: 1.3.11
 Author: Twinpictures
 Author URI: http://www.twinpictures.de
 License: GPL2
@@ -52,8 +52,21 @@ function collapsTronic($atts, $content = null){
 		'targclass' => '',
 		'rel' => '',
 		'expanded' => '',
+		'excerpt' => '',
+		'excerptpos' => 'below-trigger',
+		'excerpttag' => 'div',
+		'excerptclass' => '',
 	), $atts));
 	
+	if($excerpt){
+		if($excerptpos == 'above-trigger'){
+			$nibble = '<'.$excerpttag.' class="'.$excerptclass.'">'.$excerpt.'</'.$excerpttag.'>';
+		}
+		else{
+			$nibble = '<'.$excerpttag.' class="collapseomatic_excerpt '.$excerptclass.'">'.$excerpt.'</'.$excerpttag.'>';
+		}
+		
+	}
 	$altatt = '';
 	if($alt){
 		$altatt = 'alt="'.$alt.'" title="'.$alt.'"';
@@ -76,7 +89,20 @@ function collapsTronic($atts, $content = null){
 	if($content != ' '){
 		$eDiv = '<div id="target-'.$id.'" class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	}
-	return $link . $eDiv;
+	if($excerpt){
+		if($excerptpos == 'above-trigger'){
+			return $nibble . $link . $eDiv;
+		}
+		else if($excerptpos == 'below-trigger'){
+			return $link . $nibble . $eDiv;
+		}
+		else{
+			return $link . $eDiv . $nibble;
+		}
+	}
+	else{
+		return $link . $eDiv;
+	}
 }
 
 add_shortcode('expand', 'collapsTronic');

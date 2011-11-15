@@ -1,11 +1,11 @@
-﻿=== jQuery Collapse-O-Matic ===
+=== jQuery Collapse-O-Matic ===
 
 Contributors: Twinpictures
 Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
-Tested up to: 3.2.1
-Stable tag: 1.3.10
+Tested up to: 3.3
+Stable tag: 1.3.11
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.11 =
+* Added excerpt feature and all related attributes.
 
 = 1.3.10 =
 * Swaptitle system rebuilt to support images and cufon.
@@ -101,6 +104,8 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+= 1.3.11 =
+Added excerpt feature that allows a juicy bit of nibble text to be displayed above and below the trigger text&mdash;as well as below the target text.
 
 = 1.3.10 =
 Rebuilt swaptitle to support images and cufon text.  Change CSS names to be more plug-in specific.
