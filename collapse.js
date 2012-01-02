@@ -1,8 +1,8 @@
 /*!
- * jQuery Collapse-O-Matic v1.2.6
+ * jQuery Collapse-O-Matic v1.2.7
  * http://www.twinpictures.de/collapse-o-matic/
  *
- * Copyright 2011, Twinpictures
+ * Copyright 2012, Twinpictures
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,9 +42,14 @@ jQuery(document).ready(function() {
     
     jQuery('.collapseomatic').click(function() {
 		//alert('phones ringin dude');
-		jQuery(this).toggleClass('colomat-close');
 		var id = jQuery(this).attr('id');
-		
+		if(id.indexOf('bot-') != '-1'){
+			id = id.substr(4);
+			jQuery('#'+id).toggleClass('colomat-close');
+		}
+		else{
+			jQuery(this).toggleClass('colomat-close');
+		}
 		//check if the title needs to be swapped out
 		if(jQuery("#swap-"+id).length > 0){
 			var orightml = jQuery(this).html();
