@@ -4,8 +4,8 @@ Contributors: Twinpictures
 Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
 Requires at least: 2.8
-Tested up to: 3.3
-Stable tag: 1.3.13
+Tested up to: 3.3.1
+Stable tag: 1.3.14
 
 Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
 
@@ -43,6 +43,12 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.14 =
+* Fixed the Enqueue error (thanks pborg & lancehudson)
+* Expand All and Collapse All will now also trigger swap titles
+* Added force_content_collapse class trigger to hide all targets w/o tirggers (roll-your-own)
+* Added content_collapse_wrapper class trigger that keeps targets hidden if no JavaScript is present.
 
 = 1.3.13 =
 * Added the ability to place a second trigger link inside the expanding content area.
@@ -110,6 +116,9 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+= 1.3.14 =
+Fixed Enqueue error and swap title on expand/collpase all.  Expanded roll-your-own features.
+
 = 1.3.13 =
 Added the ability to place a second trigger link inside the expanding content area.
 

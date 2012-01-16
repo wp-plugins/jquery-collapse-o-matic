@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.2.7
+ * jQuery Collapse-O-Matic v1.3.0
  * http://www.twinpictures.de/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -25,13 +25,23 @@
  */
 
 jQuery(document).ready(function() {
-    
+	
+	//force collapse
+    jQuery('.force_content_collapse').each(function(index) {
+	    jQuery(this).css('display', 'none');
+    });
+	
     //inital collapse
     jQuery('.collapseomatic:not(.colomat-close)').each(function(index) {
 	    var thisid = jQuery(this).attr('id');
 	    jQuery('#target-'+thisid).css('display', 'none');
     });
     
+	//Display the collapse wrapper... use to reverse the show-all on no JavaScript degredation.
+	jQuery('.content_collapse_wrapper').each(function(index) {
+		jQuery(this).css('display', 'inline');
+	});
+	
     jQuery('.collapseomatic').hover(function () {
             jQuery(this).addClass("colomat-hover");
         },
@@ -180,6 +190,20 @@ jQuery(document).ready(function() {
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
 					jQuery(this).addClass('colomat-close');
 					var thisid = jQuery(this).attr('id');
+					
+					if(jQuery("#swap-"+thisid).length > 0){
+						var orightml = jQuery(this).html();
+						var swaphtml = jQuery("#swap-"+thisid).html();
+						jQuery(this).html(swaphtml);
+						jQuery("#swap-"+thisid).html(orightml);
+						
+						//is cufon involved? if so, do that thing
+						if(swaphtml.indexOf("<cufon") != -1){
+							var trigelem = jQuery(this).get(0).tagName;
+							Cufon.replace(trigelem);
+						}
+					}
+				
 					jQuery('#target-'+thisid).slideToggle('fast', function() {
 						// Animation complete.
 					});
@@ -189,6 +213,20 @@ jQuery(document).ready(function() {
 			jQuery('.collapseomatic:not(.colomat-close)').each(function(index) {
 				jQuery(this).addClass('colomat-close');
 				var thisid = jQuery(this).attr('id');
+				
+				if(jQuery("#swap-"+thisid).length > 0){
+					var orightml = jQuery(this).html();
+					var swaphtml = jQuery("#swap-"+thisid).html();
+					jQuery(this).html(swaphtml);
+					jQuery("#swap-"+thisid).html(orightml);
+					
+					//is cufon involved? if so, do that thing
+					if(swaphtml.indexOf("<cufon") != -1){
+						var trigelem = jQuery(this).get(0).tagName;
+						Cufon.replace(trigelem);
+					}
+				}
+					
 				jQuery('#target-'+thisid).slideToggle('fast', function() {
 				// Animation complete.
 				});
@@ -202,6 +240,20 @@ jQuery(document).ready(function() {
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
 				jQuery(this).removeClass('colomat-close');
 				var thisid = jQuery(this).attr('id');
+				
+				if(jQuery("#swap-"+thisid).length > 0){
+					var orightml = jQuery(this).html();
+					var swaphtml = jQuery("#swap-"+thisid).html();
+					jQuery(this).html(swaphtml);
+					jQuery("#swap-"+thisid).html(orightml);
+					
+					//is cufon involved? if so, do that thing
+					if(swaphtml.indexOf("<cufon") != -1){
+						var trigelem = jQuery(this).get(0).tagName;
+						Cufon.replace(trigelem);
+					}
+				}
+				
 				jQuery('#target-'+thisid).slideToggle('fast', function() {
 					// Animation complete.
 				});
@@ -211,6 +263,20 @@ jQuery(document).ready(function() {
 			jQuery('.collapseomatic.colomat-close').each(function(index) {	                 
 				jQuery(this).removeClass('colomat-close');
 				var thisid = jQuery(this).attr('id');
+				
+				if(jQuery("#swap-"+thisid).length > 0){
+					var orightml = jQuery(this).html();
+					var swaphtml = jQuery("#swap-"+thisid).html();
+					jQuery(this).html(swaphtml);
+					jQuery("#swap-"+thisid).html(orightml);
+					
+					//is cufon involved? if so, do that thing
+					if(swaphtml.indexOf("<cufon") != -1){
+						var trigelem = jQuery(this).get(0).tagName;
+						Cufon.replace(trigelem);
+					}
+				}
+				
 				jQuery('#target-'+thisid).slideToggle('fast', function() {
 				// Animation complete.
 				});
