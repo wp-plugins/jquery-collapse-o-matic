@@ -2,16 +2,16 @@
 
 Contributors: Twinpictures
 Donate link: http://www.twinpictures.de/collapse-o-matic/
-Tags: collapse, expand, collapsible, expandable, content, shortcode, hidden, jQuery, javascript, twinpictures
+Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.3.14
+Stable tag: 1.3.15
 
-Collapse-O-Matic adds an `[expand]` shortcode that wraps any object or content--including other shortcodes--into a lovely jQuery collapsible div.
+Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an `[expand]` shortcode that will wrap any content in an expanding and collapsing div.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery collapsible div.  A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> and attribute demos are available. This plug-in was inspired by DrLebowski's Collapsing Objects.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options and attribute demos</a> are available. This plug-in was inspired by DrLebowski's Collapsing Objects.
 
 == Installation ==
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.15 =
+* Added trigpos attribute to position the trigger below the target.
 
 = 1.3.14 =
 * Fixed the Enqueue error (thanks pborg & lancehudson)
@@ -116,6 +119,10 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.3.15 =
+Added trigpos attribute to position the trigger below the target.
+
 = 1.3.14 =
 Fixed Enqueue error and swap title on expand/collpase all.  Expanded roll-your-own features.
 
