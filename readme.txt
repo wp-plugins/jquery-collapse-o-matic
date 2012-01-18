@@ -5,7 +5,7 @@ Donate link: http://www.twinpictures.de/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.3.15
+Stable tag: 1.3.16
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an `[expand]` shortcode that will wrap any content in an expanding and collapsing div.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.16 =
+* Bug Fix for the new trigpos attribute, stupid, stupid, stupid
 
 = 1.3.15 =
 * Added trigpos attribute to position the trigger below the target.
@@ -119,6 +122,9 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.3.16 =
+* Bug Fix for the new trigpos attribute, stupid, stupid, stupid
 
 = 1.3.15 =
 Added trigpos attribute to position the trigger below the target.
