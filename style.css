@@ -2,11 +2,16 @@
 	background-image: url(images/arrow-down.png);
 	background-repeat: no-repeat;
 	padding: 0 0 10px 16px;
+	/*border: 1px dotted blue;*/
 	cursor: pointer;
 }
 .arrowright {
 	background-position: top right;
 	padding: 0 16px 10px 0;
+}
+.noarrow {
+	background-image: none !important;
+	padding: 0 0 10px 0;
 }
 .colomat-hover {
 	text-decoration: underline;

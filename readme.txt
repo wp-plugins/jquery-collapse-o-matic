@@ -1,11 +1,11 @@
 === jQuery Collapse-O-Matic ===
 
 Contributors: Twinpictures
-Donate link: http://www.twinpictures.de/collapse-o-matic/
+Donate link: http://www.twinpictures.de/jquery-collapse-o-matic-v1-3/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.3.16
+Stable tag: 1.3.17
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an `[expand]` shortcode that will wrap any content in an expanding and collapsing div.
 
@@ -43,6 +43,12 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.17 =
+* Improved nesting collapse function for sub-levels and added support for nesting 30 levels deep.
+
+= 1.3.16.1 =
+* Added noarrows class for better integration of images as triggers.
 
 = 1.3.16 =
 * Bug Fix for the new trigpos attribute, stupid, stupid, stupid
@@ -122,6 +128,12 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.3.17 =
+* Improved nesting collapse function for sub-levels and added support for nesting 30 levels deep.
+
+= 1.3.16.1 =
+* Added noarrows class for better integration of images as triggers.
 
 = 1.3.16 =
 * Bug Fix for the new trigpos attribute, stupid, stupid, stupid
