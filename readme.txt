@@ -7,7 +7,7 @@ Requires at least: 2.8
 Tested up to: 3.3.1
 Stable tag: 1.3.18
 
-Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an [expand] shortcode that wrappes any content in a collapsable div.
+Remove clutter, save space: display and hide additional content in a SEO friendly way by warpping content in an [expand] shortcode.
 
 == Description ==
 
@@ -32,7 +32,7 @@ Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Fa
 Ah yes! <a href='http://twitter.com/#!/twinpictures'>@Twinpictures</a> does the twitter tweeting around here.
 
 = How does one use the shortcode, exactly? =
-A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options</a> has been provided to answer this exact question.
+A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options</a> has been provided to answer this exact question.
 
 = Is Galato the same as Ice Cream? =
 No. Not even close.
