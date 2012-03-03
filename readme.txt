@@ -5,7 +5,7 @@ Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.3.18
+Stable tag: 1.4
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way by warpping content in an [expand] shortcode.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.4 =
+* Relaunched of plugin page on Twinpictures' Plugin Oven
 
 = 1.3.18 =
 * Added alternate style sheet for sites with dark backgrounds.
@@ -131,6 +134,9 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Improved support and FAQs on Plugin Oven support page
 
 = 1.3.18 =
 * Added alternate style sheet for sites with dark backgrounds.
