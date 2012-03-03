@@ -1,17 +1,17 @@
 === jQuery Collapse-O-Matic ===
 
-Contributors: Twinpictures
-Donate link: http://www.twinpictures.de/jquery-collapse-o-matic-v1-3/
+Contributors: twinpictures, baden03
+Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.3.1
-Stable tag: 1.3.17
+Stable tag: 1.3.18
 
-Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an `[expand]` shortcode that will wrap any content in an expanding and collapsing div.
+Remove clutter, save space: display and hide additional content in a SEO friendly way. Collapse-O-Matic adds an [expand] shortcode that wrappes any content in a collapsable div.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://www.twinpictures.de/jquery-collapse-o-matic-1-3/'>complete listing of shortcode options and attribute demos</a> are available. This plug-in was inspired by DrLebowski's Collapsing Objects.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/tags/jquery-collapse-o-matic'>free community</a> and <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/support/'>premium support</a>. This plug-in was inspired by DrLebowski's Collapsing Objects.
 
 == Installation ==
 
@@ -21,7 +21,7 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Test that the this plug-in meets your demanding needs.
 1. Tweak the CSS to match your flavor.
 1. Rate the plug-in and verify if it works at wordpress.org.
-1. Leave a comment regarding bugs, feature request, cocktail recipes at http://www.twinpictures.de/jquery-collapse-o-matic-1-3/
+1. Leave a comment regarding bugs, feature request, cocktail recipes at http://wordpress.org/tags/jquery-collapse-o-matic/
 
 == Frequently Asked Questions ==
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.3.18 =
+* Added alternate style sheet for sites with dark backgrounds.
 
 = 1.3.17 =
 * Improved nesting collapse function for sub-levels and added support for nesting 30 levels deep.
@@ -128,6 +131,9 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.3.18 =
+* Added alternate style sheet for sites with dark backgrounds.
 
 = 1.3.17 =
 * Improved nesting collapse function for sub-levels and added support for nesting 30 levels deep.
