@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.2
+ * jQuery Collapse-O-Matic v1.3.4
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -24,8 +24,9 @@
  * THE SOFTWARE.
  */
 
+var durration = 'fast';
+
 jQuery(document).ready(function() {
-	
 	//force collapse
     jQuery('.force_content_collapse').each(function(index) {
 	    jQuery(this).css('display', 'none');
@@ -45,6 +46,15 @@ jQuery(document).ready(function() {
 		}
     });
 	
+	//initial position for find-me feature
+	jQuery('.find-me').each(function(index) {
+		var thisid = jQuery(this).attr('id');
+		if( !jQuery('#find-'+thisid).attr('name') ){
+			var target_offset = jQuery(this).offset();
+			var target_top_offset = target_offset.top;
+			jQuery('#find-'+thisid).attr('name', target_top_offset);
+		}
+	});
     
 	//Display the collapse wrapper... use to reverse the show-all on no JavaScript degredation.
 	jQuery('.content_collapse_wrapper').each(function(index) {
@@ -75,7 +85,7 @@ jQuery(document).ready(function() {
 			swapTitle(this, id);
 		}
 		
-		jQuery('#target-'+id).slideToggle('fast', function() {
+		jQuery('#target-'+id).slideToggle(durration, function() {
 			// Animation complete.
 		});
         
@@ -116,7 +126,7 @@ jQuery(document).ready(function() {
 					swapTitle(this, id);
 				}
 		
-                jQuery('#target-'+id).slideToggle('fast', function() {
+                jQuery('#target-'+id).slideToggle(durration, function() {
                     // Animation complete.
                 });
 				
@@ -144,7 +154,7 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-                jQuery('#target-'+thisid).slideToggle('fast', function() {
+                jQuery('#target-'+thisid).slideToggle(durration, function() {
                     // Animation complete.
                 });
 				
@@ -181,7 +191,7 @@ jQuery(document).ready(function() {
 						swapTitle(this, thisid);
 					}
 				
-					jQuery('#target-'+thisid).slideToggle('fast', function() {
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
 						// Animation complete.
 					});
 			});
@@ -195,7 +205,7 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 					
-				jQuery('#target-'+thisid).slideToggle('fast', function() {
+				jQuery('#target-'+thisid).slideToggle(durration, function() {
 				// Animation complete.
 				});
 			});
@@ -213,7 +223,7 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle('fast', function() {
+				jQuery('#target-'+thisid).slideToggle(durration, function() {
 					// Animation complete.
 				});
 			});
@@ -227,10 +237,27 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle('fast', function() {
+				jQuery('#target-'+thisid).slideToggle(durration, function() {
 				// Animation complete.
 				});
 			});
 		}
     });
+	
+	//do we have a find me?
+	jQuery('.find-me').click(function() {  
+		//event.preventDefault();
+		//get the top offset of the target anchor
+		var thisid = jQuery(this).attr('id');
+		var offset_top = jQuery('#find-'+thisid).attr('name');
+		//alert(offset_top);
+		//var target_offset = jQuery(this).offset();
+		//var target_position = jQuery(this).position();
+		//var target_top_offset = target_offset.top;
+		//var target_top_position = target_position.top;
+		//alert('target_top_offset: ' + target_top_offset + ' and target_top_position: ' + target_top_position);
+		//goto that anchor by setting the body scroll top to anchor top
+		jQuery('html, body').animate({scrollTop:offset_top}, 500);
+		//alert("please scroll to me");
+	});
 });
