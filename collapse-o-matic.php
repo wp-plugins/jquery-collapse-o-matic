@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.4.1
+Version: 1.4.4
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -32,7 +32,7 @@ function collapsTronicInit() {
 	$plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 	if (!is_admin()){
 		//collapse script
-		wp_register_script('collapseomatic-js', $plugin_url.'/collapse.js', array ('jquery'), '1.3.2' );
+		wp_register_script('collapseomatic-js', $plugin_url.'/collapse.min.js', array ('jquery'), '1.3.5' );
 		wp_enqueue_script('collapseomatic-js');
 
 			//css
@@ -70,6 +70,7 @@ function collapsTronic($atts, $content = null){
 		'excerptpos' => 'below-trigger',
 		'excerpttag' => 'div',
 		'excerptclass' => '',
+		'findme' => '',
 	), $atts));
 	
 	if($excerpt){
@@ -95,7 +96,16 @@ function collapsTronic($atts, $content = null){
 	if($expanded){
 		$trigclass .= ' colomat-close';
 	}
-	$link = "<".$tag." class='collapseomatic ".$trigclass."' id='".$id."' ".$relatt." ".$altatt.">".$title."</".$tag.">\n";
+	$anchor = '';
+	if($findme){
+		$trigclass .= ' find-me';
+		$offset = '';
+		if($findme != 'true' && $findme != 'auto'){
+			$offset = $findme;
+		}
+		$anchor = "<a id='find-".$id."' name='".$offset."'></a>\n";
+	}
+	$link = "<".$tag." class='collapseomatic ".$trigclass."' id='".$id."' ".$relatt." ".$altatt.">".$title."</".$tag.">".$anchor."\n";
 	if($swaptitle){
 		$link .= "<".$tag." id='swap-".$id."' style='display:none;'>".$swaptitle."</".$tag.">\n";
 	}
@@ -139,13 +149,6 @@ function collapsTronic($atts, $content = null){
 	}
 	return $retStr;
 }
-
-/*
-add_shortcode('expand', 'collapsTronic');
-for ($i=1; $i<30; $i++) {
-	add_shortcode('expandsub'.$i, 'collapsTronic');
-}
-*/
 
 //add the filter to the sidebar widgets
 add_filter('widget_text', 'do_shortcode');

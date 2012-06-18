@@ -4,14 +4,14 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
-Tested up to: 3.3.1
-Stable tag: 1.4.1
+Tested up to: 3.4
+Stable tag: 1.4.4
 
-Remove clutter, save space: display and hide additional content in a SEO friendly way by warpping content in an [expand] shortcode.
+Remove clutter, save space: display and hide additional content in a SEO friendly way by wrapping content in an [expand] shortcode.
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/tags/jquery-collapse-o-matic'>free community</a> and <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/support/'>premium support</a>. This plug-in was inspired by DrLebowski's Collapsing Objects.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/support/plugin/jquery-collapse-o-matic'>free community</a> and <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/support/'>premium support</a>. This plug-in was originally inspired by DrLebowski's Collapsing Objects.
 
 == Installation ==
 
@@ -25,7 +25,7 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 
 == Frequently Asked Questions ==
 
-= I am a Social Netwookiee, do you have a Facebook page? =
+= I am a Social Netwookiee, might Twinpictures have a Facebook page? =
 Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
 
 = Does Twinpictures do the Twitter? =
@@ -43,6 +43,15 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.4.4 =
+* Minified javascript for faster page loads
+
+= 1.4.3 =
+* Added the findme attribute to auto scroll to start of expanded items
+
+= 1.4.2 =
+* Added speed adjustment to the slideToggle
 
 = 1.4.1 =
 * Autoclose elements will now trigger SwapTitle
@@ -137,6 +146,16 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.4.4 =
+* JavaScript has been minified for faster page loads
+
+= 1.4.3 =
+* added findme attribute to autoscroll to expanded elements
+
+= 1.4.2 =
+* added speed control to collapse/expand effect
+
 = 1.4.1 =
 * Swaptitle will be triggered by autoexpand/collapse events such as highlander grouping.
 
