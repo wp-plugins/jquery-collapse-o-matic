@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.4
+ * jQuery Collapse-O-Matic v1.3.5
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -246,18 +246,9 @@ jQuery(document).ready(function() {
 	
 	//do we have a find me?
 	jQuery('.find-me').click(function() {  
-		//event.preventDefault();
 		//get the top offset of the target anchor
 		var thisid = jQuery(this).attr('id');
 		var offset_top = jQuery('#find-'+thisid).attr('name');
-		//alert(offset_top);
-		//var target_offset = jQuery(this).offset();
-		//var target_position = jQuery(this).position();
-		//var target_top_offset = target_offset.top;
-		//var target_top_position = target_position.top;
-		//alert('target_top_offset: ' + target_top_offset + ' and target_top_position: ' + target_top_position);
-		//goto that anchor by setting the body scroll top to anchor top
 		jQuery('html, body').animate({scrollTop:offset_top}, 500);
-		//alert("please scroll to me");
 	});
 });
