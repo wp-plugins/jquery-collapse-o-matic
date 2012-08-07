@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.4.5
+Version: 1.4.6
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2

@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.6
+ * jQuery Collapse-O-Matic v1.3.7
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -24,9 +24,9 @@
  * THE SOFTWARE.
  */
 
+//expand/collapse speed
+var duration = 'fast';
 jQuery(document).ready(function() {
-	//expand/collapse speed
-	var durration = 'fast';
 	//slide only (slideToggle) or slide and fade (slideFade)
 	var slideEffect = 'slideFade';
 	

@@ -5,7 +5,7 @@ Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
 Tested up to: 3.4.1
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way by wrapping content in an [expand] shortcode.
 
@@ -43,6 +43,9 @@ No. Not even close.
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
 
 == Changelog ==
+
+= 1.4.6 =
+* fixed JS error in 1.4.5 - GRRR
 
 = 1.4.5 =
 * Added SlideFade/SlideToggle option
@@ -150,6 +153,9 @@ No. Not even close.
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.4.6 =
+* Fixed JS bug in 1.4.5 - Sorry people.
 
 = 1.4.5 =
 * Added SlideFade/SlideToggle option and visited trigers now have colomat-visited class
