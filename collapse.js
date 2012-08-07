@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.5
+ * jQuery Collapse-O-Matic v1.3.6
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -24,9 +24,12 @@
  * THE SOFTWARE.
  */
 
-var durration = 'fast';
-
 jQuery(document).ready(function() {
+	//expand/collapse speed
+	var durration = 'fast';
+	//slide only (slideToggle) or slide and fade (slideFade)
+	var slideEffect = 'slideFade';
+	
 	//force collapse
     jQuery('.force_content_collapse').each(function(index) {
 	    jQuery(this).css('display', 'none');
@@ -85,9 +88,22 @@ jQuery(document).ready(function() {
 			swapTitle(this, id);
 		}
 		
-		jQuery('#target-'+id).slideToggle(durration, function() {
+		//add visited class
+		jQuery(this).addClass('colomat-visited');
+		
+		//slideToggle
+		if(slideEffect == 'slideToggle'){
+			jQuery('#target-'+id).slideToggle(durration, function() {
 			// Animation complete.
-		});
+			});
+		}
+		//slideFade
+		else if(slideEffect == 'slideFade'){
+			jQuery('#target-'+id).animate({
+				height: "toggle",
+				opacity: "toggle"
+			}, duration);
+		}
         
         //deal with grouped items if needed
         if(jQuery(this).attr('rel') !== undefined){
@@ -126,9 +142,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, id);
 				}
 		
-                jQuery('#target-'+id).slideToggle(durration, function() {
-                    // Animation complete.
-                });
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+id).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+id).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 				
 				//check if there are nested children that need to be collapsed
 				var ancestors = jQuery('.collapseomatic', '#target-'+id);
@@ -154,9 +180,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-                jQuery('#target-'+thisid).slideToggle(durration, function() {
-                    // Animation complete.
-                });
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 				
 				//check if there are nested children that need to be collapsed
 				var ancestors = jQuery('.collapseomatic', '#target-'+id);
@@ -176,8 +212,10 @@ jQuery(document).ready(function() {
     var myFile = document.location.toString();
     if (myFile.match('#')) { // the URL contains an anchor
         // click the navigation item corresponding to the anchor
-        var myAnchor = '#' + myFile.split('#')[1];
-        jQuery(myAnchor).click();
+        var myAnchor = '#' + myFile.split('#');
+		if(myAnchor.length > 1 && myAnchor[1] != '#'){
+			jQuery(myAnchor).click();
+		}
     }
     
     jQuery('.expandall').click(function() {
@@ -190,10 +228,20 @@ jQuery(document).ready(function() {
 					if(jQuery("#swap-"+thisid).length > 0){
 						swapTitle(this, thisid);
 					}
-				
-					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					
+					//slideToggle
+					if(slideEffect == 'slideToggle'){
+						jQuery('#target-'+thisid).slideToggle(durration, function() {
 						// Animation complete.
-					});
+						});
+					}
+					//slideFade
+					else if(slideEffect == 'slideFade'){
+						jQuery('#target-'+thisid).animate({
+							height: "toggle",
+							opacity: "toggle"
+						}, duration);
+					}
 			});
 	    }
 		else{
@@ -204,10 +252,20 @@ jQuery(document).ready(function() {
 				if(jQuery("#swap-"+thisid).length > 0){
 					swapTitle(this, thisid);
 				}
-					
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
-				// Animation complete.
-				});
+				
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
     });
@@ -223,9 +281,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
 					// Animation complete.
-				});
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
 		else{
@@ -237,9 +305,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
-				// Animation complete.
-				});
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
     });
