@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.7
+ * jQuery Collapse-O-Matic v1.4.7
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -212,9 +212,9 @@ jQuery(document).ready(function() {
     var myFile = document.location.toString();
     if (myFile.match('#')) { // the URL contains an anchor
         // click the navigation item corresponding to the anchor
-        var myAnchor = '#' + myFile.split('#');
-		if(myAnchor.length > 1 && myAnchor[1] != '#'){
-			jQuery(myAnchor).click();
+        var anchor_arr = myFile.split('#');
+		if(anchor_arr.length > 1 && anchor_arr[1] != '#'){
+			jQuery('#' + anchor_arr[1]).click();
 		}
     }
     
