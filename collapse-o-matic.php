@@ -3,7 +3,7 @@
 Plugin Name: jQuery Collapse-O-Matic
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.4.7
+Version: 1.4.8
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -28,24 +28,23 @@ License: GPL2
 
 function collapsTronicInit() {
 	wp_enqueue_script('jquery');
-
-	$plugin_url = trailingslashit( get_bloginfo('wpurl') ).PLUGINDIR.'/'. dirname( plugin_basename(__FILE__) );
 	if (!is_admin()){
 		//collapse script
-		wp_register_script('collapseomatic-js', $plugin_url.'/collapse.min.js', array ('jquery'), '1.3.5' );
+		wp_register_script('collapseomatic-js', plugins_url('/collapse.min.js', __FILE__), array('jquery'), '1.4.8');
+		//wp_register_script('collapseomatic-js', plugins_url('/collapse.js', __FILE__), array('jquery'), '1.4.8');
 		wp_enqueue_script('collapseomatic-js');
 
 			//css
-		wp_register_style( 'collapseomatic-css', $plugin_url.'/style.css', array (), '1.5.1' );
+		wp_register_style( 'collapseomatic-css', plugins_url('/style.css', __FILE__) , array (), '1.5.2' );
 		wp_enqueue_style( 'collapseomatic-css' );
 	}
-
+	
 	add_shortcode('expand', 'collapsTronic');
 	
 	for ($i=1; $i<30; $i++) {
 		add_shortcode('expandsub'.$i, 'collapsTronic');
 	}
-
+	
 	//add the filter to the sidebar widgets
 	add_filter('widget_text', 'do_shortcode');
 }
@@ -59,6 +58,7 @@ function collapsTronic($atts, $content = null){
 		'title' => '',
 		'swaptitle' => '',
 		'alt' => '',
+		'notitle' => '',
 		'id' => 'id'.$ran,
 		'tag' => 'span',
 		'trigclass' => '',
@@ -71,8 +71,10 @@ function collapsTronic($atts, $content = null){
 		'excerpttag' => 'div',
 		'excerptclass' => '',
 		'findme' => '',
+		'scrollonclose' => '',
+		'startwrap' => '',
+		'endwrap' => ''
 	), $atts));
-	
 	if($excerpt){
 		if($excerptpos == 'above-trigger'){
 			$nibble = '<'.$excerpttag.' class="'.$excerptclass.'">'.$excerpt.'</'.$excerpttag.'>';
@@ -86,7 +88,7 @@ function collapsTronic($atts, $content = null){
 	if($alt){
 		$altatt = 'alt="'.$alt.'" title="'.$alt.'"';
 	}
-	else{
+	else if( !$notitle ){
 		$altatt = 'title="'.$title.'"';
 	}
 	$relatt = '';
@@ -103,16 +105,23 @@ function collapsTronic($atts, $content = null){
 		if($findme != 'true' && $findme != 'auto'){
 			$offset = $findme;
 		}
-		$anchor = "<a id='find-".$id."' name='".$offset."'></a>\n";
+		$anchor = '<a id="find-'.$id.'" name="'.$offset.'"> </a>';
 	}
-	$link = "<".$tag." class='collapseomatic ".$trigclass."' id='".$id."' ".$relatt." ".$altatt.">".$title."</".$tag.">".$anchor."\n";
+	$closeanchor = '';
+	if($scrollonclose && (is_numeric($scrollonclose) || $scrollonclose == 0)){
+		$trigclass .= ' scroll-to-trigger';
+		$closeanchor = '<a id="scrollonclose-'.$id.'" name="'.$scrollonclose.'"> </a>';
+	}
+	$link = $closeanchor.$anchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
 	if($swaptitle){
-		$link .= "<".$tag." id='swap-".$id."' style='display:none;'>".$swaptitle."</".$tag.">\n";
+		$link .= "<".$tag." id='swap-".$id."' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 	}
+
 	$eDiv = '';
 	if($content){
-		$eDiv = "<div id='target-".$id."' class='collapseomatic_content ".$targclass."'>".do_shortcode($content)."</div>\n";
+		$eDiv = '<div id="target-'.$id.'" class="collapseomatic_content '.$targclass.'">'.do_shortcode($content).'</div>';
 	}
+	
 	if($excerpt){
 		if($excerptpos == 'above-trigger'){
 			if($trigpos == 'below'){
@@ -147,9 +156,7 @@ function collapsTronic($atts, $content = null){
 			$retStr = $link.$eDiv;
 		}
 	}
+	//return '<span class="removeomatic">'.$retStr.'</span>';
 	return $retStr;
 }
-
-//add the filter to the sidebar widgets
-add_filter('widget_text', 'do_shortcode');
 ?>
