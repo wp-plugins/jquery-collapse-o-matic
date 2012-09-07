@@ -4,7 +4,7 @@ Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
 Requires at least: 2.8
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: 1.4.8
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way by wrapping content in an [expand] shortcode.
@@ -45,7 +45,7 @@ No. Not even close.
 == Changelog ==
 
 = 1.4.8 =
-* Click events now use jQuery's on() event handler for content that arrived dynamically via AJAX
+* Click events now use jQuery's on() event handler for content that arrived dynamically via AJAX NOTE: plugin now requires jQuery version 1.7 or newer
 * added notitle attribute if no title should be displayed
 * added startwrap and enwrap attributes for wrapping titles
 * fixed bug when using nested close links and highlander grouping
