@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.4.8
+ * jQuery Collapse-O-Matic v1.4.9
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -27,6 +27,7 @@
 //expand/collapse speed
 var duration = 'fast';
 var slideEffect = 'slideFade';
+
 jQuery(document).ready(function() {
 	
 	//force collapse
@@ -63,7 +64,8 @@ jQuery(document).ready(function() {
 		jQuery(this).css('display', 'inline');
 	});
 	
-    jQuery('.collapseomatic').on("hover", function(event){
+    //jQuery('.collapseomatic').on("hover", function(event){
+	jQuery('.collapseomatic').hover(function () {
             jQuery(this).addClass("colomat-hover");
         },
         function () {
@@ -72,7 +74,8 @@ jQuery(document).ready(function() {
     );
     
 	
-    jQuery('.collapseomatic').on("click", function(event){
+    //jQuery('.collapseomatic').on("click", function(event){
+	jQuery('.collapseomatic').click(function() {
 		var offest_top;
 		
 		//alert('phones ringin dude');
@@ -231,7 +234,8 @@ jQuery(document).ready(function() {
         });
     }
     
-    jQuery('.expandall').on("click", function(event){
+    //jQuery('.expandall').on("click", function(event){
+	jQuery('.expandall').click(function() {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
@@ -283,7 +287,8 @@ jQuery(document).ready(function() {
 		}
     });
     
-    jQuery('.collapseall').on("click", function(event){
+    //jQuery('.collapseall').on("click", function(event){
+	jQuery('.collapseall').click(function() {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
@@ -336,7 +341,8 @@ jQuery(document).ready(function() {
     });
 	
 	//do we have a find me?
-	jQuery('.find-me').on("click", function(event){
+	//jQuery('.find-me').on("click", function(event){
+	jQuery('.find-me').click(function() {
 		//get the top offset of the target anchor
 		var thisid = jQuery(this).attr('id');
 		var offset_top = jQuery('#find-'+thisid).attr('name');
@@ -367,7 +373,8 @@ jQuery(document).ready(function() {
     }
 	
 	//handle anchor links within the same page
-	jQuery('a.expandanchor').on("click", function(event){
+	//jQuery('a.expandanchor').on("click", function(event){
+	jQuery('a.expandanchor').click(function() {
 		event.preventDefault();
 		var fullurl = jQuery(this).attr('href');
 		if (fullurl.match('#')) { // the URL contains an anchor
