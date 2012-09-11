@@ -1,5 +1,5 @@
 /*!
- * jQuery Collapse-O-Matic v1.3.5
+ * jQuery Collapse-O-Matic v1.4.9
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2012, Twinpictures
@@ -24,9 +24,12 @@
  * THE SOFTWARE.
  */
 
-var durration = 'fast';
+//expand/collapse speed
+var duration = 'fast';
+var slideEffect = 'slideFade';
 
 jQuery(document).ready(function() {
+	
 	//force collapse
     jQuery('.force_content_collapse').each(function(index) {
 	    jQuery(this).css('display', 'none');
@@ -55,13 +58,14 @@ jQuery(document).ready(function() {
 			jQuery('#find-'+thisid).attr('name', target_top_offset);
 		}
 	});
-    
+	
 	//Display the collapse wrapper... use to reverse the show-all on no JavaScript degredation.
 	jQuery('.content_collapse_wrapper').each(function(index) {
 		jQuery(this).css('display', 'inline');
 	});
 	
-    jQuery('.collapseomatic').hover(function () {
+    //jQuery('.collapseomatic').on("hover", function(event){
+	jQuery('.collapseomatic').hover(function () {
             jQuery(this).addClass("colomat-hover");
         },
         function () {
@@ -70,12 +74,29 @@ jQuery(document).ready(function() {
     );
     
 	
-    jQuery('.collapseomatic').click(function() {
+    //jQuery('.collapseomatic').on("click", function(event){
+	jQuery('.collapseomatic').click(function() {
+		var offest_top;
+		
 		//alert('phones ringin dude');
+		if(jQuery(this).hasClass('colomat-expand-only') && jQuery(this).hasClass('colomat-close')){
+			return;
+		}
 		var id = jQuery(this).attr('id');
+		
+		//deal with any scroll to links
+		if(jQuery(this).hasClass('colomat-close') && jQuery(this).hasClass('scroll-to-trigger')){
+			var offset_top = jQuery('#scrollonclose-'+id).attr('name');
+		}
+			
 		if(id.indexOf('bot-') != '-1'){
 			id = id.substr(4);
 			jQuery('#'+id).toggleClass('colomat-close');
+			
+			//deal with any scroll to links
+			if(jQuery(this).hasClass('scroll-to-trigger')){
+				var offset_top = jQuery('#scrollonclose-'+id).attr('name');
+			}
 		}
 		else{
 			jQuery(this).toggleClass('colomat-close');
@@ -85,9 +106,23 @@ jQuery(document).ready(function() {
 			swapTitle(this, id);
 		}
 		
-		jQuery('#target-'+id).slideToggle(durration, function() {
+		//add visited class
+		jQuery(this).addClass('colomat-visited');
+		
+		//slideToggle
+		if(slideEffect == 'slideToggle'){
+			jQuery('#target-'+id).slideToggle(durration, function() {
 			// Animation complete.
-		});
+			});
+		}
+		//slideFade
+		else if(slideEffect == 'slideFade'){
+			jQuery('#target-'+id).removeClass('maptastic');
+			jQuery('#target-'+id).animate({
+				height: "toggle",
+				opacity: "toggle"
+			}, duration);
+		}
         
         //deal with grouped items if needed
         if(jQuery(this).attr('rel') !== undefined){
@@ -99,6 +134,10 @@ jQuery(document).ready(function() {
 				closeOtherGroups(rel);
 			}   
         }
+		
+		if(offset_top){
+			jQuery('html, body').animate({scrollTop:offset_top}, 500);
+		}
     });
     
 	function swapTitle(obj, id){
@@ -117,7 +156,7 @@ jQuery(document).ready(function() {
     function closeOtherGroups(rel){
         jQuery('.collapseomatic[rel!="' + rel +'"]').each(function(index) {
             //add close class if open
-            if(jQuery(this).hasClass('colomat-close') && jQuery(this).attr('rel') !== undefined){                
+            if(jQuery(this).hasClass('colomat-close') && jQuery(this).attr('rel') !== undefined){
                 jQuery(this).removeClass('colomat-close');
                 var id = jQuery(this).attr('id');
 				
@@ -126,9 +165,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, id);
 				}
 		
-                jQuery('#target-'+id).slideToggle(durration, function() {
-                    // Animation complete.
-                });
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+id).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+id).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 				
 				//check if there are nested children that need to be collapsed
 				var ancestors = jQuery('.collapseomatic', '#target-'+id);
@@ -154,33 +203,39 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-                jQuery('#target-'+thisid).slideToggle(durration, function() {
-                    // Animation complete.
-                });
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 				
 				//check if there are nested children that need to be collapsed
 				var ancestors = jQuery('.collapseomatic', '#target-'+id);
 				ancestors.each(function(index) {
-					jQuery(this).removeClass('colomat-close');
-					var thisid = jQuery(this).attr('id');
-					//check if the title needs to be swapped out
-					if(jQuery("#swap-"+thisid).length > 0){
-						swapTitle(this, thisid);
+					if(jQuery(this).attr('id').indexOf('bot-') == '-1'){
+						jQuery(this).removeClass('colomat-close');
+						var thisid = jQuery(this).attr('id');
+						//check if the title needs to be swapped out
+						if(jQuery("#swap-"+thisid).length > 0){
+							swapTitle(this, thisid);
+						}
+						jQuery('#target-'+thisid).css('display', 'none');
 					}
-					jQuery('#target-'+thisid).css('display', 'none');
 				})
             }
         });
     }
     
-    var myFile = document.location.toString();
-    if (myFile.match('#')) { // the URL contains an anchor
-        // click the navigation item corresponding to the anchor
-        var myAnchor = '#' + myFile.split('#')[1];
-        jQuery(myAnchor).click();
-    }
-    
-    jQuery('.expandall').click(function() {
+    //jQuery('.expandall').on("click", function(event){
+	jQuery('.expandall').click(function() {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
@@ -190,10 +245,20 @@ jQuery(document).ready(function() {
 					if(jQuery("#swap-"+thisid).length > 0){
 						swapTitle(this, thisid);
 					}
-				
-					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					
+					//slideToggle
+					if(slideEffect == 'slideToggle'){
+						jQuery('#target-'+thisid).slideToggle(durration, function() {
 						// Animation complete.
-					});
+						});
+					}
+					//slideFade
+					else if(slideEffect == 'slideFade'){
+						jQuery('#target-'+thisid).animate({
+							height: "toggle",
+							opacity: "toggle"
+						}, duration);
+					}
 			});
 	    }
 		else{
@@ -204,15 +269,26 @@ jQuery(document).ready(function() {
 				if(jQuery("#swap-"+thisid).length > 0){
 					swapTitle(this, thisid);
 				}
-					
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
-				// Animation complete.
-				});
+				
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
     });
     
-    jQuery('.collapseall').click(function() {
+    //jQuery('.collapseall').on("click", function(event){
+	jQuery('.collapseall').click(function() {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
@@ -223,9 +299,19 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
 					// Animation complete.
-				});
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
 		else{
@@ -237,18 +323,85 @@ jQuery(document).ready(function() {
 					swapTitle(this, thisid);
 				}
 				
-				jQuery('#target-'+thisid).slideToggle(durration, function() {
-				// Animation complete.
-				});
+				//slideToggle
+				if(slideEffect == 'slideToggle'){
+					jQuery('#target-'+thisid).slideToggle(durration, function() {
+					// Animation complete.
+					});
+				}
+				//slideFade
+				else if(slideEffect == 'slideFade'){
+					jQuery('#target-'+thisid).animate({
+						height: "toggle",
+						opacity: "toggle"
+					}, duration);
+				}
 			});
 		}
     });
 	
 	//do we have a find me?
-	jQuery('.find-me').click(function() {  
+	//jQuery('.find-me').on("click", function(event){
+	jQuery('.find-me').click(function() {
 		//get the top offset of the target anchor
 		var thisid = jQuery(this).attr('id');
 		var offset_top = jQuery('#find-'+thisid).attr('name');
 		jQuery('html, body').animate({scrollTop:offset_top}, 500);
+		//console.log(offset_top);
 	});
+	
+	//handle new page loads with anchor
+	var myFile = document.location.toString();
+    if (myFile.match('#')) { // the URL contains an anchor
+        // click the navigation item corresponding to the anchor
+        var anchor_arr = myFile.split('#');
+		if(anchor_arr.length > 1){
+			junk = anchor_arr.splice(0, 1);
+			anchor = anchor_arr.join('#');
+		}
+		else{
+			anchor = anchor_arr[0];
+		}
+		jQuery('#' + anchor).click();
+		//expand any nested parents
+		jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
+			parent_arr = jQuery(this).attr('id').split('-');
+			junk = parent_arr.splice(0, 1);
+			parent = parent_arr.join('-');
+			jQuery('#' + parent).click();
+		})
+    }
+	
+	//handle anchor links within the same page
+	//jQuery('a.expandanchor').on("click", function(event){
+	jQuery('a.expandanchor').click(function() {
+		event.preventDefault();
+		var fullurl = jQuery(this).attr('href');
+		if (fullurl.match('#')) { // the URL contains an anchor
+			// click the navigation item corresponding to the anchor
+			var anchor_arr = fullurl.split('#');
+			if(anchor_arr.length > 1){
+				junk = anchor_arr.splice(0, 1);
+				anchor = anchor_arr.join('#');
+			}
+			else{
+				anchor = anchor_arr[0];
+			}
+			if(!jQuery('#' + anchor).hasClass('colomat-close')){
+				jQuery('#' + anchor).click();
+			}
+			
+			//expand any nested parents
+			jQuery('#' + anchor).parents('.collapseomatic_content').each(function(index) {
+				parent_arr = jQuery(this).attr('id').split('-');
+				junk = parent_arr.splice(0, 1);
+				parent = parent_arr.join('-');
+				if(!jQuery('#' + parent).hasClass('colomat-close')){
+					jQuery('#' + parent).click();
+				}
+				
+			})
+		}
+	});
+	
 });
