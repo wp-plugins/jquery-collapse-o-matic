@@ -159,13 +159,15 @@ function closeOtherMembers(rel, id){
 
 //initial position for find-me feature
 function findme(){
-	jQuery('.find-me').each(function(index) {
-		var thisid = jQuery(this).attr('id');
-		if( !jQuery('#find-'+thisid).attr('name') ){
-			var target_offset = jQuery(this).offset();
-			var target_top_offset = target_offset.top;
-			jQuery('#find-'+thisid).attr('name', target_top_offset);
-		}
+	jQuery(document).ready(function() {
+		jQuery('.find-me').each(function(index) {
+			var thisid = jQuery(this).attr('id');
+			if( !jQuery('#find-'+thisid).attr('name') ){
+				var target_offset = jQuery(this).offset();
+				var target_top_offset = target_offset.top;
+				jQuery('#find-'+thisid).attr('name', target_top_offset);
+			}
+		});
 	});
 }
 
@@ -463,4 +465,4 @@ jQuery(document).ready(function() {
 	});	
 });
 
-jQuery(window).load( findme() );
+jQuery(window).load( findme );

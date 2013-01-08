@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: jQuery Collapse-O-Matic
+Plugin Name: Collapse-O-Matic
 Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
