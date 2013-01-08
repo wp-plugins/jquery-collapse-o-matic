@@ -25,11 +25,16 @@
 	padding: 0px;
 }
 .content_collapse_wrapper {
-	display: none;
+	position: absolute; left: -999em;
 }
 .collapseall, .expandall {
 	cursor: pointer;
 }
 .collapseall:hover, .expandall:hover {
 	text-decoration: underline;
+}
+.maptastic {
+    position: absolute !important;
+	left: -10000px !important;
+	display:block !important;
 }
