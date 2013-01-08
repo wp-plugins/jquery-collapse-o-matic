@@ -1,8 +1,8 @@
 /*!
- * jQuery Collapse-O-Matic v1.5
+ * Collapse-O-Matic v1.5.1
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
- * Copyright 2012, Twinpictures
+ * Copyright 2013, Twinpictures
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -154,20 +154,6 @@ function closeOtherMembers(rel, id){
 				}
 			})
 		}
-	});
-}
-
-//initial position for find-me feature
-function findme(){
-	jQuery(document).ready(function() {
-		jQuery('.find-me').each(function(index) {
-			var thisid = jQuery(this).attr('id');
-			if( !jQuery('#find-'+thisid).attr('name') ){
-				var target_offset = jQuery(this).offset();
-				var target_top_offset = target_offset.top;
-				jQuery('#find-'+thisid).attr('name', target_top_offset);
-			}
-		});
 	});
 }
 
@@ -402,6 +388,10 @@ jQuery(document).ready(function() {
 		//get the top offset of the target anchor
 		var thisid = jQuery(this).attr('id');
 		var offset_top = jQuery('#find-'+thisid).attr('name');
+		if(!offset_top){
+			target_offset = jQuery(this).offset();
+			offset_top = target_offset.top;
+		}
 		jQuery('html, body').animate({scrollTop:offset_top}, 500);
 		//console.log(offset_top);
 	});
@@ -464,5 +454,3 @@ jQuery(document).ready(function() {
 		event.preventDefault();
 	});	
 });
-
-jQuery(window).load( findme );
