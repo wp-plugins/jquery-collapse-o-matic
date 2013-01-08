@@ -51,7 +51,7 @@ No. Not even close.
 == Changelog ==
 
 = 1.5.1 =
-* fine-me auto feature improved to work with responsive websites
+* find-me auto feature improved to work with responsive websites
 
 = 1.5 =
 * completely re-wrote plugin
@@ -199,7 +199,7 @@ Fixed auto-expand of urls with id-anchors
 == Upgrade Notice ==
 
 = 1.5.1 =
-* fine-me auto feature now works with responsive webistes
+* find-me auto feature now works with responsive webistes
 
 = 1.5 =
 * Plugin code completely rewritten
