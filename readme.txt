@@ -1,11 +1,13 @@
-=== jQuery Collapse-O-Matic ===
+=== Collapse-O-Matic ===
 
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
-Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures
+Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
 Requires at least: 2.8
-Tested up to: 3.4.2
-Stable tag: 1.4.9
+Tested up to: 3.5
+Stable tag: 1.5
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Remove clutter, save space: display and hide additional content in a SEO friendly way by wrapping content in an [expand] shortcode.
 
@@ -25,6 +27,9 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 
 == Frequently Asked Questions ==
 
+= Where can I translate this plugin into my favorite langauge? =
+<a href='http://translate.twinpictures.de/projects/colomat'>Community translation for Collapse-O-Matic</a> has been set up. All are <a href='http://translate.twinpictures.de/wordpress/wp-login.php?action=register'>welcome to join</a>.
+
 = I am a Social Netwookiee, might Twinpictures have a Facebook page? =
 Yes, yes... <a href='http://www.facebook.com/twinpictures'>Twinpictures is on Facebook</a>.
 
@@ -39,13 +44,35 @@ No. Not even close.
 
 == Screenshots ==
 
-1. Hmmm.. wonder what happens this text by that arrow is clicked?
+1. Hmmm... wonder what happens this text by that arrow is clicked?
 2. Holy Crap! That other text just showed up like magic!  Thank you Collapse-O-Matic!
+3. Options Page? Yes, Options Page!
 
 == Changelog ==
 
+= 1.5 =
+* completely re-wrote plugin
+* added sweet-sweet options page
+* added colomat-expand-only class that forces collapse element to only open once and stay open
+* introduced Collapse-Pro-Matic for Premium Level Collapsing Action.
+* added scroll-to-trigger class for Internal Collapse Triggers
+* added livequery to bind collapse functions to dynamically added content
+* added callbacks: collapse_init(); and findme(); for dynamically added content
+* added language files for localization
+
+= 1.4.11 =
+* added colomat-parent-highlight class functionality
+* moved findme auto calculations until after all images have loaded.
+* Added elwraptag and elwrapclass attributes
+* Added snap-shut class to slam collapse elements shut
+
+= 1.4.10 =
+* Added colomat-nolink class for anchor tags to prevent auto-scrolling to anchor
+* bot- links for targets with swaptitle will now only swap out title for top trigger text
+
 = 1.4.9 =
 * Replaced on() event handler back to click due to the WordPress world not quite ready for on(). People are still using jQuery 1.6.4 - can you believe that?!
+
 = 1.4.8 =
 * Click events now use jQuery's on() event handler for content that arrived dynamically via AJAX NOTE: plugin now requires jQuery version 1.7 or newer
 * added notitle attribute if no title should be displayed
@@ -167,6 +194,23 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.5 =
+* Plugin code completely rewritten
+* Added Option Page
+* added scroll-to-trigger class for Internal Collapse Triggers
+* added livequery and callbacks to handle dynamically added collapse elements
+* language translation support
+
+= 1.4.11 =
+* added colomat-parent-highlight class functionality
+* findme auto position calculated after images have loaded
+* Added elwraptag and elwrapclass attributes to wrap entire expand elements in an html element
+* Added snap-shut class to slam collapses shut
+
+= 1.4.10 =
+* Added colomat-nolink class to prevent &lt;a&gt; anchors auto scrolling the page.
+* bot- links text will no longer swap out if triggers use swap-title
 
 = 1.4.9 =
 * on() event handler rolled back to .click() and .hover() for WordPress installs that still use jQuery 1.6.4 - if you can believe that.
