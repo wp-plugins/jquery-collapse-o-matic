@@ -3,9 +3,9 @@
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
-Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 1.5.1
+Requires at least: 3.3
+Tested up to: 3.6-beta
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,16 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.5.2 =
+* find-me now is called only after collapse/expand animations
+* using .on() method once again
+* updated Requires at least tag to 3.3
+* added swapexcerpt
+* fixed typos on the options page
+* added custom css to options page
+* added targtag and targpos attributes
+* added the ability to insert extra external triggers
 
 = 1.5.1 =
 * find-me auto feature improved to work with responsive websites
@@ -198,8 +208,18 @@ Fixed auto-expand of urls with id-anchors
 
 == Upgrade Notice ==
 
+= 1.5.2 =
+* find-me is now called after all collapse/expand animations finish
+* removed livequery in favor of jQuery .on() method
+* updated Requires at least tag to 3.3
+* added swapexcerpt attribute
+* fixed typos on the options page
+* added custom css to options page
+* added targtag and targpos attributes
+* added ability to add extra internal triggers
+
 = 1.5.1 =
-* find-me auto feature now works with responsive webistes
+* find-me auto feature now works with responsive websites
 
 = 1.5 =
 * Plugin code completely rewritten
