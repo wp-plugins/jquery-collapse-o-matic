@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic v1.5.2
+ * Collapse-O-Matic v1.5.3
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2013, Twinpictures
@@ -252,12 +252,13 @@ jQuery(document).ready(function() {
 			offset_top = jQuery('#scrollonclose-'+id).attr('name');
 		}
 		
+		var id_arr = id.split('-');
+		
 		//deal with extra tirggers
-		var pre_id = id.split('-');
-		if (pre_id[0].indexOf('extra') != '-1') {
+		if (id_arr[0].indexOf('extra') != '-1') {
 			//console.log('this is an extra trigger');
-			pre = pre_id.splice(0, 1);
-			id = pre_id.join('-');
+			pre = id_arr.splice(0, 1);
+			id = id_arr.join('-');
 			
 			//deal with any scroll to links from the Extra Collapse Trigger
 			if(jQuery(this).hasClass('scroll-to-trigger')){
@@ -328,12 +329,11 @@ jQuery(document).ready(function() {
 				if( jQuery(this).hasClass('colomat-inline') && jQuery(this).is(':visible') ){
 					jQuery(this).css('display', 'inline');
 				}
-				
-				trig_id = jQuery(this).attr('id').substring(7);
-				if(jQuery('#'+trig_id).hasClass('find-me').hasClass('colomat-close')){
-					offset_top = jQuery('#find-'+trig_id).attr('name');
+							
+				if( jQuery('#'+id).hasClass('find-me') && jQuery('#'+id).hasClass('colomat-close') ){
+					offset_top = jQuery('#find-'+id).attr('name');
 					if(!offset_top){
-						target_offset = jQuery('#'+trig_id).offset();
+						target_offset = jQuery('#'+id).offset();
 						offset_top = target_offset.top;
 					}
 					jQuery('html, body').animate({scrollTop:offset_top}, 500);
@@ -352,12 +352,11 @@ jQuery(document).ready(function() {
 					jQuery(this).css('display', 'inline');
 				}
 				
-				//deal with any findme links
-				trig_id = jQuery(this).attr('id').substring(7);
-				if( jQuery('#'+trig_id).hasClass('find-me') && jQuery('#'+trig_id).hasClass('colomat-close') ){
-					offset_top = jQuery('#find-'+trig_id).attr('name');
+				//deal with any findme links				
+				if( jQuery('#'+id).hasClass('find-me') && jQuery('#'+id).hasClass('colomat-close') ){
+					offset_top = jQuery('#find-'+id).attr('name');
 					if(!offset_top){
-						target_offset = jQuery('#'+trig_id).offset();
+						target_offset = jQuery('#'+id).offset();
 						offset_top = target_offset.top;
 					}
 					jQuery('html, body').animate({scrollTop:offset_top}, 500);
