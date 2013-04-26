@@ -52,6 +52,7 @@ No. Not even close.
 
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
+* fixed hasClass error in Slide Only animation option
 
 = 1.5.2 =
 * find-me now is called only after collapse/expand animations
@@ -213,6 +214,7 @@ Fixed auto-expand of urls with id-anchors
 
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
+* fixed hasClass error in Slide Only animation option
 
 = 1.5.2 =
 * find-me is now called after all collapse/expand animations finish
