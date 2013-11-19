@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.3
+Version: 1.5.4
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.3';
+	var $version = '1.5.4';
 
 	/**
 	 * Used as prefix for options entry
@@ -49,13 +49,6 @@ class WP_Collapse_O_Matic {
 	);
 
 	/**
-	 * PHP4 constructor
-	 */
-	function WP_Collapse_O_Matic() {
-		$this->__construct();
-	}
-
-	/**
 	 * PHP5 constructor
 	 */
 	function __construct() {
@@ -65,12 +58,6 @@ class WP_Collapse_O_Matic {
 		// load text domain for translations
 		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-		// set uninstall hook
-		/* removed in version 1.5.2
-		if ( function_exists( 'register_deactivation_hook' ) )
-			register_deactivation_hook( __FILE__, array( $this, 'deactivation' ));
-		*/
-		
 		//load the script and style if not viwing the dashboard
 		if (!is_admin()){
 			add_action('init', array( $this, 'collapsTronicInit' ) );
@@ -114,12 +101,12 @@ class WP_Collapse_O_Matic {
 		wp_enqueue_script('jquery');
 		
 		//collapse script
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.2');
-		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.2');
+		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.4');
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.4');
 		wp_enqueue_script('collapseomatic-js');
 				
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.2' );
+		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.4' );
 		wp_enqueue_style( 'collapseomatic-css' );
 	}
 
@@ -429,15 +416,6 @@ class WP_Collapse_O_Matic {
 		</div>
 	<?php
 	}
-
-	/**
-	 * Deactivation plugin method
-	 * Removed in version 1.5.2
-	function deactivation() {
-		delete_option( $this->options_name );
-		unregister_setting( $this->domain, $this->options_name );
-	}
-	*/
 	
 	/**
 	 * Set options from save values or defaults
