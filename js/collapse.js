@@ -1,5 +1,5 @@
 /*!
- * Collapse-O-Matic v1.5.3
+ * Collapse-O-Matic v1.5.4
  * http://plugins.twinpictures.de/plugins/collapse-o-matic/
  *
  * Copyright 2013, Twinpictures
@@ -238,7 +238,7 @@ jQuery(document).ready(function() {
 	}, '.collapseomatic'); //pass the element as an argument to .on
     
 	//the main collapse/expand function
-	jQuery('.collapseomatic').on('click', function(event) {
+	jQuery(document).on('click', '.collapseomatic', function(event) {
 		var offset_top;
 		
 		//alert('phones ringin dude');
@@ -381,7 +381,7 @@ jQuery(document).ready(function() {
 		
     });
 	
-	jQuery('.expandall').on('click', function(event) {
+	jQuery(document).on('click', '.expandall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic:not(.colomat-close)').each(function(index) {
@@ -459,7 +459,7 @@ jQuery(document).ready(function() {
 		}
     });
     
-	jQuery('.collapseall').on('click', function(event) {
+	jQuery(document).on('click', '.collapseall', function(event) {
 		if(jQuery(this).attr('rel') !== undefined){
 			var rel = jQuery(this).attr('rel');
 			jQuery('.collapseomatic[rel="' + rel +'"].collapseomatic.colomat-close').each(function(index) {
@@ -567,7 +567,7 @@ jQuery(document).ready(function() {
     }
 	
 	//handle anchor links within the same page
-	jQuery('a.expandanchor').on('click', function(event) {
+	jQuery(document).on('click', 'a.expandanchor', function(event) {
 		event.preventDefault();
 		var fullurl = jQuery(this).attr('href');
 		if (fullurl.match('#')) { // the URL contains an anchor
@@ -597,8 +597,7 @@ jQuery(document).ready(function() {
 		}
 	});
 	
-	//jQuery('a.colomat-nolink').click(function(event) {
-	jQuery('a.colomat-nolink').on('click', function(event) {
+	jQuery(document).on('click', 'a.colomat-nolink', function(event) {
 		event.preventDefault();
 	});	
 });
