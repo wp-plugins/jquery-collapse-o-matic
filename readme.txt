@@ -5,7 +5,7 @@ Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 1.5.5
+Stable tag: 1.5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.5.6 =
+* fixed admin_init error
 
 = 1.5.5 =
 * updated for 3.8
@@ -220,6 +223,9 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.5.6 =
+* admin_init error is fixed.  oops!
 
 = 1.5.5 =
 * updated for 3.8

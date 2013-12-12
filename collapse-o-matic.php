@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.5
+Version: 1.5.6
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -120,6 +120,13 @@ class WP_Collapse_O_Matic {
 		}
 	}
 
+	/**
+	 * Callback admin_init
+	 */
+	function admin_init() {
+		// register settings
+		register_setting( $this->domain, $this->options_name );
+	}
 	
 	/**
 	 * Callback shortcode
