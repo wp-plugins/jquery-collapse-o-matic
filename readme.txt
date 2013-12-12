@@ -3,9 +3,9 @@
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
-Requires at least: 3.3
-Tested up to: 3.6-beta
-Stable tag: 1.5.3
+Requires at least: 3.5
+Tested up to: 3.8
+Stable tag: 1.5.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ Remove clutter, save space: display and hide additional content in a SEO friendl
 
 == Description ==
 
-Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/support/plugin/jquery-collapse-o-matic'>free community</a> and <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/support/'>premium support</a>.
+Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` shortcode that will wrap any content, including other shortcodes, into a lovely jQuery expanding and collapsing div.  A <a href='http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/'>complete listing of shortcode options and attribute demos</a> are available, as well as <a href='http://wordpress.org/support/plugin/jquery-collapse-o-matic'>free community</a> support.
 
 == Installation ==
 
@@ -49,6 +49,15 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.5.5 =
+* updated for 3.8
+* cleaned up old code
+
+= 1.5.4 =
+* updated .on method
+* removed php4 constructor
+* added DE and RU languages
 
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
@@ -211,6 +220,15 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.5.5 =
+* updated for 3.8
+* cleaned up old code
+
+= 1.5.4 =
+* updated jQuery .on() method
+* removed php4 constructor
+* added DE and RU languages
 
 = 1.5.3 =
 * shortcode works in sidebar widgets (again)
