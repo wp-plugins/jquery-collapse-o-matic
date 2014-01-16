@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.5.6
+Version: 1.5.7
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.5.6';
+	var $version = '1.5.7';
 
 	/**
 	 * Used as prefix for options entry
@@ -45,7 +45,8 @@ class WP_Collapse_O_Matic {
 		'tag' => 'span',
 		'duration' => 'fast',
 		'slideEffect' => 'slideFade',
-		'custom_css' => ''
+		'custom_css' => '',
+		'script_check' => 1
 	);
 
 	/**
@@ -57,17 +58,15 @@ class WP_Collapse_O_Matic {
 		
 		// load text domain for translations
 		load_plugin_textdomain( 'colomat', FALSE, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-		//load the script and style if not viwing the dashboard
-		if (!is_admin()){
-			add_action('init', array( $this, 'collapsTronicInit' ) );
-		}
+		
+		//load the script and style if viewing the front-end
+		add_action('wp_enqueue_scripts', array( $this, 'collapsTronicInit' ) );
 		
 		// add actions
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'plugin_actions' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
-		add_action('wp_head', array( $this, 'colomat_js_vars' ) );
+		add_action( 'wp_footer', array( $this, 'colomat_js_vars' ) );
 		
 		add_shortcode('expand', array($this, 'shortcode'));
 		
@@ -96,17 +95,15 @@ class WP_Collapse_O_Matic {
 	/**
 	 * Callback init
 	 */
-	function collapsTronicInit() {
-		//load up jQuery the Jedi way
-		wp_enqueue_script('jquery');
-		
+	function collapsTronicInit() {		
 		//collapse script
-		//wp_register_script('collapseomatic-js', plugins_url('js/collapse.min.js', __FILE__), array('jquery'), '1.5.4');
-		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.4');
-		wp_enqueue_script('collapseomatic-js');
-				
+		wp_register_script('collapseomatic-js', plugins_url('js/collapse.js', __FILE__), array('jquery'), '1.5.7', true);
+		if( empty($this->options['script_check']) ){
+			wp_enqueue_script('collapseomatic-js');
+		}
+		
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.4' );
+		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.5.7' );
 		wp_enqueue_style( 'collapseomatic-css' );
 	}
 
@@ -132,8 +129,11 @@ class WP_Collapse_O_Matic {
 	 * Callback shortcode
 	 */
 	function shortcode($atts, $content = null){
-		//find a random number, if no id is assigned
 		$options = $this->options;
+		if( !empty($this->options['script_check']) ){
+			wp_enqueue_script('collapseomatic-js');
+		}
+		//find a random number, if no id is assigned
 		$ran = rand(1, 10000);
 		extract(shortcode_atts(array(
 			'title' => '',
@@ -376,6 +376,13 @@ class WP_Collapse_O_Matic {
 									<th><?php _e( 'Custom Style', 'colomat' ) ?>:</th>
 									<td><label><textarea id="<?php echo $this->options_name ?>[custom_css]" name="<?php echo $this->options_name ?>[custom_css]" style="width: 100%; height: 150px;"><?php echo $options['custom_css']; ?></textarea>
 										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'colomat' ) ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><?php _e( 'Shortcode Loads Scripts', 'colomat' ) ?></th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[script_check]" name="<?php echo $this->options_name ?>[script_check]" value="1"  <?php echo checked( $options['script_check'], 1 ); ?> /> <?php _e('Only load scripts with shortcode.', 'colomat'); ?>
+										<br /><span class="description"><?php _e('Only load Collapse-O-Matic scripts if [expand] shortcode is used.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
 								
