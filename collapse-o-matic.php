@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.1
+Version: 1.6.2
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.1';
+	var $version = '1.6.2';
 
 	/**
 	 * Used as prefix for options entry
@@ -149,7 +149,7 @@ class WP_Collapse_O_Matic {
 		$ran = rand(1, 10000);
 		extract(shortcode_atts(array(
 			'title' => '',
-			'cid' => '',
+			'cid' => $options['cid'],
 			'swaptitle' => '',
 			'alt' => '',
 			'swapalt' => '',
@@ -222,7 +222,7 @@ class WP_Collapse_O_Matic {
 				$inline_class = 'colomat-inline ';
 				$collapse_class = 'collapseomatic_content_inline ';
 			}
-			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.do_shortcode($content).'</'.$targtag.'>';
+			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.do_shortcode($content).'</'.$targtag.'>';	
 		}
 		
 		if($excerpt){
@@ -271,7 +271,7 @@ class WP_Collapse_O_Matic {
 		}
 		$link = $closeanchor.$anchor.'<'.$tag.' class="collapseomatic '.$trigclass.'" id="'.$id.'" '.$relatt.' '.$altatt.'>'.$startwrap.$title.$endwrap.'</'.$tag.'>';
 		if($swaptitle){
-			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
+			$link .= "<".$tag." id='swap-".$id."' alt='".$swapalt."' class='colomat-swap' style='display:none;'>".$startwrap.$swaptitle.$endwrap."</".$tag.">";
 		}
 		
 		if($excerpt){
@@ -477,14 +477,14 @@ class WP_Collapse_O_Matic {
 								</tr>
 								<?php if( !is_plugin_active( 'collapse-commander/collapse-commander.php' ) ) : ?>
 								<tr>
-									<th><strong><?php _e( 'Collapse Managment', 'colomat' ) ?></strong></th>
+									<th><strong><?php _e( 'Take Command!', 'colomat' ) ?></strong></th>
 									<td><?php printf(__( '%sCollapse Commander%s is an add-on plugin that introduces an advanced management interface to better organize expand elements and simplify expand shortcodes.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/">', '</a>'); ?>
 									</td>
 								</tr>
 								<?php endif; ?>
 								<tr>
 									<th><strong><?php _e( 'Level Up!', 'colomat' ) ?></strong></th>
-									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our preimum plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">', '</a>'); ?>
+									<td><?php printf(__( '%sCollapse-Pro-Matic%s is our premium plugin that offers additional attributes and features for <i>ultimate</i> flexibility.', 'colomat' ), '<a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">', '</a>'); ?>
 									</td>
 								</tr>
 								</table>
