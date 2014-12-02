@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.2
+Version: 1.6.3
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -23,7 +23,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.2';
+	var $version = '1.6.3';
 
 	/**
 	 * Used as prefix for options entry
@@ -44,6 +44,9 @@ class WP_Collapse_O_Matic {
 		'style' => 'light',
 		'cid' => '',
 		'tag' => 'span',
+		'trigclass' => '',
+		'targtag' => 'div',
+		'targclass' => '',
 		'duration' => 'fast',
 		'slideEffect' => 'slideFade',
 		'custom_css' => '',
@@ -156,9 +159,9 @@ class WP_Collapse_O_Matic {
 			'notitle' => '',
 			'id' => 'id'.$ran,
 			'tag' => $options['tag'],
-			'trigclass' => '',
-			'targtag' => 'div',
-			'targclass' => '',
+			'trigclass' => $options['trigclass'],
+			'targtag' => $options['targtag'],
+			'targclass' => $options['targclass'],
 			'targpos' => '',
 			'trigpos' => 'above',
 			'rel' => '',
@@ -196,6 +199,9 @@ class WP_Collapse_O_Matic {
 							${substr($key, 9)} = $value[0];
 						}
 					}
+					if(!empty($triggertext)){
+						$title = $triggertext;
+					}
 					if(!empty($highlander) && !empty($rel)){
 						$rel .= '-highlander';
 					}
@@ -205,6 +211,29 @@ class WP_Collapse_O_Matic {
 		
 		$ewo = '';
 		$ewc = '';
+		
+		//id does not allow spaces
+		$id = preg_replace('/\s+/', '_', $id);
+		
+		//placeholders
+		$placeholder_arr = array('%(%', '%)%', '%{%', '%}%');
+		$swapout_arr = array('<', '>', '[', ']');
+	
+		$title = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $title));
+		if($swaptitle){
+			$swaptitle = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $swaptitle));
+		}
+		if($startwrap){
+			$startwrap = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $startwrap));
+		}
+		if($endwrap){
+			$endwrap = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $endwrap));
+		}
+		//need to check for a few versions, because of new option setting. can be removed after a few revisiosn.
+		if(empty($targtag)){
+			$targtag = 'div';
+		}
+		
 		if($elwraptag){
 			$ewclass = '';
 			if($elwrapclass){
@@ -224,8 +253,10 @@ class WP_Collapse_O_Matic {
 			}
 			$eDiv = '<'.$targtag.' id="target-'.$id.'" class="'.$collapse_class.$inline_class.$targclass.'">'.do_shortcode($content).'</'.$targtag.'>';	
 		}
-		
+			
 		if($excerpt){
+			$excerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $excerpt));
+			
 			if($targpos == 'inline'){
 				$excerpt .= $eDiv;
 				$eDiv = '';
@@ -238,6 +269,7 @@ class WP_Collapse_O_Matic {
 			}
 			//swapexcerpt
 			if($swapexcerpt !== false){
+				$swapexcerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $swapexcerpt));
 				$nibble .= '<'.$excerpttag.' id="swapexcerpt-'.$id.'" style="display:none;">'.$swapexcerpt.'</'.$excerpttag.'>';
 			}
 		}
@@ -403,6 +435,27 @@ class WP_Collapse_O_Matic {
 								</tr>
 								
 								<tr>
+									<th><?php _e( 'Trigclass Attribute', 'colomat' ) ?>:</th>
+									<td><label><input type="text" id="<?php echo $this->options_name ?>[trigclass]" name="<?php echo $this->options_name ?>[trigclass]" value="<?php echo $options['trigclass']; ?>" />
+										<br /><span class="description"><?php printf(__('Default class assigned to the trigger element. See %sTrigclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#trigclass" target="_blank">', '</a>'); ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><?php _e( 'Targtag Attribute', 'colomat' ) ?>:</th>
+									<td><label><input type="text" id="<?php echo $this->options_name ?>[targtag]" name="<?php echo $this->options_name ?>[targtag]" value="<?php echo $options['targtag']; ?>" />
+										<br /><span class="description"><?php printf(__('HTML tag use for the target element. See %sTargtag Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targtag" target="_blank">', '</a>'); ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><?php _e( 'Targclass Attribute', 'colomat' ) ?>:</th>
+									<td><label><input type="text" id="<?php echo $this->options_name ?>[targclass]" name="<?php echo $this->options_name ?>[targclass]" value="<?php echo $options['targclass']; ?>" />
+										<br /><span class="description"><?php printf(__('Default class assigned to the target element. See %sTargclass Attribute%s in the documentation for more info.', 'colomat'), '<a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/documentation/#targclass" target="_blank">', '</a>'); ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
 									<?php
 										if(empty($options['duration'])){
 												$options['duration'] = 'fast';
@@ -512,6 +565,7 @@ class WP_Collapse_O_Matic {
 							<li><?php printf( __('If this plugin %s, please consider %sreviewing it at WordPress.org%s to help others.', 'colomat'), $like_it, '<a href="http://wordpress.org/support/view/plugin-reviews/jquery-collapse-o-matic" target="_blank">', '</a>' ) ?></li>
 							<li><a href="http://wordpress.org/extend/plugins/jquery-collapse-o-matic/" target="_blank">WordPress.org</a> | <a href="http://plugins.twinpictures.de/plugins/collapse-o-matic/" target="_blank">Twinpictues Plugin Oven</a></li>
 						</ul>
+						<p style="padding: 5px; border: 1px dashed #cccc66; background: #EEE;"><strong>Limited Offer:</strong> <a href="http://plugins.twinpictures.de/premium-plugins/collapse-pro-matic/">Upgrade to Collapse-Pro-Matic</a> or add on <a href="http://plugins.twinpictures.de/premium-plugins/collapse-commander/">Collapse Commander</a> before January 1, 2015 and receive a lifetime unlimited licence.  Starting in 2015, all Plugin Oven pro plugins will introduce new pricing and licensing tiers.</p>
 					</div>
 				</div>
 			</div>
@@ -583,5 +637,20 @@ class WP_Collapse_O_Matic {
  * Create instance
  */
 $WP_Collapse_O_Matic = new WP_Collapse_O_Matic;
+
+//clean unwanted p and br tags from shortcodes
+//http://www.wpexplorer.com/clean-up-wordpress-shortcode-formatting
+if (!function_exists('wpex_clean_shortcodes')) {
+	function wpex_clean_shortcodes($content){   
+		$array = array (
+		    '<p>[' => '[', 
+		    ']</p>' => ']', 
+		    ']<br />' => ']'
+		);
+		$content = strtr($content, $array);
+		return $content;
+	}
+	add_filter('the_content', 'wpex_clean_shortcodes');
+}
 
 ?>
