@@ -3,9 +3,9 @@
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
-Requires at least: 3.5
+Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,11 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
 
 = 1.6.3 =
 * added shortcode and html support for the title, swaptitle, startwrap, enwrap and excerpt attributes using placeholders
@@ -262,6 +267,11 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
 
 = 1.6.3 =
 * added shortcode support for the excerpt attribute
