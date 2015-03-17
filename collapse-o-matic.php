@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.6
+Version: 1.6.7a
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +30,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.6';
+	var $version = '1.6.7a';
 
 	/**
 	 * Used as prefix for options entry
@@ -61,7 +61,8 @@ class WP_Collapse_O_Matic {
 		'script_check' => '',
 		'script_location' => 'footer',
 		'cc_download_key' => '',
-		'cc_email' => ''
+		'cc_email' => '',
+		'filter_content' => '',
 	);
 	
 	var $license_group = 'colomat_licenseing';
@@ -195,7 +196,7 @@ class WP_Collapse_O_Matic {
 			'endwrap' => '',
 			'elwraptag' => '',
 			'elwrapclass' => '',
-			'filter' => 'true',
+			'filter' => $options['filter_content'],
 			'tabindex' => $options['tabindex']
 		), $atts));
 		
@@ -230,7 +231,7 @@ class WP_Collapse_O_Matic {
 							$content = get_the_content();
 						}else{
 							$content = apply_filters( 'the_content', get_the_content() );
-							$content = str_replace( ']]>', ']]&gt;', $content );
+							//$content = str_replace( ']]>', ']]&gt;', $content );
 						}
 					}
 				}
@@ -538,6 +539,13 @@ class WP_Collapse_O_Matic {
 									<th><?php _e( 'Custom Style', 'colomat' ) ?>:</th>
 									<td><label><textarea id="<?php echo $this->options_name ?>[custom_css]" name="<?php echo $this->options_name ?>[custom_css]" style="width: 100%; height: 150px;"><?php echo $options['custom_css']; ?></textarea>
 										<br /><span class="description"><?php _e( 'Custom CSS style for <em>ultimate flexibility</em>', 'colomat' ) ?></span></label>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><?php _e( 'Content Filter', 'colomat' ) ?>:</th>
+									<td><label><input type="checkbox" id="<?php echo $this->options_name ?>[filter_content]" name="<?php echo $this->options_name ?>[filter_content]" value="1"  <?php echo checked( $options['filter_content'], 1 ); ?> /> <?php _e('Apply filter', 'colomat'); ?>
+										<br /><span class="description"><?php _e('Apply the_content filter to target content.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
 								
