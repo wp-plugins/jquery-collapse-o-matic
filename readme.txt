@@ -2,10 +2,10 @@
 
 Contributors: twinpictures, baden03
 Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
-Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more
-Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 1.5.7
+Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
+Requires at least: 3.9
+Tested up to: 4.2
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,13 +21,13 @@ Collapse-O-Matic adds an `[expand title="trigger text"]hidden content[/expand]` 
 1. Activate the Plug-in
 1. Add a the shortcode to your post like so: `[expand title="Displayed Title Goes Here"]Hidden content goes here[/expand]`
 1. Test that the this plug-in meets your demanding needs.
-1. Tweak the CSS to match your flavor.
+1. Tweak the CSS to match your flavour.
 1. Rate the plug-in and verify if it works at wordpress.org.
 1. Leave a comment regarding bugs, feature request, cocktail recipes at http://wordpress.org/tags/jquery-collapse-o-matic/
 
 == Frequently Asked Questions ==
 
-= Where can I translate this plugin into my favorite langauge? =
+= Where can I translate this plugin into my favourite language? =
 <a href='http://translate.twinpictures.de/projects/colomat'>Community translation for Collapse-O-Matic</a> has been set up. All are <a href='http://translate.twinpictures.de/wordpress/wp-login.php?action=register'>welcome to join</a>.
 
 = I am a Social Netwookiee, might Twinpictures have a Facebook page? =
@@ -49,6 +49,62 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.8 =
+* fixed filter_content toggle bug.
+* even if content is not to be filtered, it will still be passed through do_shortcode function
+
+= 1.6.7 =
+* added filter_content to the options page, defaults to off
+
+= 1.6.6 =
+* added filter attribute to pass the content through the_content filter
+* changed name of wpex_clean_shortcodes function
+* tested up to: WordPress 4.2-alpha-31047
+
+= 1.6.5 =
+* maptastic class only removed when present
+* maptastic has a max-width assigned to prevent content from entering display area.
+* updated collapse-commander integration to work with new licensing system
+* tested up to: WordPress 4.2-alpha-31047
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
+
+= 1.6.3 =
+* added shortcode and html support for the title, swaptitle, startwrap, enwrap and excerpt attributes using placeholders
+* added wpex_clean_shortcodes filter to strip unwanted p and br tags from the shortcode
+* added the ability to set trigclass, targtag and targclass attribute values in the plugin options page
+
+= 1.6.2 =
+* added colomat-swap class to the swaptitle element
+* added optional cid default to the shortcode
+
+= 1.6.1 =
+* fixed undeclared cid variable
+
+= 1.6 =
+* fixed issue with using id anchor links on elements with expanded=‘true’
+* added support for Collapse Commander add-on plugin to manage expand elements
+
+= 1.5.10 =
+* change the find me element from an anchor to an input due to HTML5 no longer supporting the Name attribute
+* fixed bug with trigpos inline
+* added span_fix classes to css files
+* added 4.0 icons to assets
+
+= 1.5.9 =
+* fixed issue with missing classes in dark style
+* streamlined the collapse/expand function
+* streamlined the collapseall/expandall functions
+* added auto to scrollonclose attribute
+* added new colomat_expandall and colomat_collpaseall functions that can be triggered externally
+
+= 1.5.8 =
+* load scripts only if shortcode is in use defaults to false - load all the time
+* added option to choose where all scripts will load: header or footer
 
 = 1.5.7 =
 * option to only load scripts if shortcode is in use
@@ -229,6 +285,61 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.6.8 =
+* fixed filter_content toggle bug.
+* even if content is not to be filtered, it will still be passed through do_shortcode function
+
+= 1.6.7 =
+* added filter_content to the options page, defaults to off
+
+= 1.6.6 =
+* added filter attribute to pass the content through the_content filter
+* changed name of wpex_clean_shortcodes function
+
+= 1.6.5 =
+* maptastic class only removed when present
+* maptastic has a max-width assigned to prevent content from entering display area.
+* updated collapse-commander integration to work with new licensing system
+* tested up to: WordPress 4.2-alpha-31047
+
+= 1.6.4 =
+* added plugin to GitHub: https://github.com/baden03/collapse-o-matic
+* added new tabindex attribute to shortcode and options page
+* registration fields are masked using password input type
+
+= 1.6.3 =
+* added shortcode support for the excerpt attribute
+* added wpex_clean_shortcodes filter to strip unwanted p and br tags from the shortcode
+* added the ability to set trigclass, targtag and targclass attribute values in the plugin options page
+
+= 1.6.2 =
+* added colomat-swap class to the swaptitle element
+* added optional cid default to the shortcode
+
+= 1.6.1 =
+* fixed undeclared cid variable
+
+= 1.6 =
+* fixed issue with using id anchor links on elements with expanded=‘true’
+* added support for Collapse Commander add-on plugin to manage expand elements
+
+= 1.5.10 =
+* fixed an HTML5 validation issue with anchors having name attributes
+* fixed bug with trigpos inline
+* added span_fix classes to css files
+* added 4.0 icons to assets
+
+= 1.5.9 =
+* fixed issue with missing classes in dark style
+* streamlined the collapse/expand function
+* streamlined the collapseall/expandall functions
+* scrollonclose attribute now accepts auto as value
+* added new colomat_expandall and colomat_collpaseall functions that can be triggered externally
+
+= 1.5.8 =
+* scripts always load by default
+* can choose if script loads in header or footer
 
 = 1.5.7 =
 * option to only load scripts if shortcode is in use
