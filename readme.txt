@@ -5,7 +5,7 @@ Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 1.6.7
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,10 @@ No. Not even close.
 3. Options Page? Yes, Options Page!
 
 == Changelog ==
+
+= 1.6.8 =
+* fixed filter_content toggle bug.
+* even if content is not to be filtered, it will still be passed through do_shortcode function
 
 = 1.6.7 =
 * added filter_content to the options page, defaults to off
@@ -281,6 +285,10 @@ Fixed auto-expand of urls with id-anchors
 * The plug-in came to be.
 
 == Upgrade Notice ==
+
+= 1.6.8 =
+* fixed filter_content toggle bug.
+* even if content is not to be filtered, it will still be passed through do_shortcode function
 
 = 1.6.7 =
 * added filter_content to the options page, defaults to off

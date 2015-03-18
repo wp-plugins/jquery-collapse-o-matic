@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.7
+Version: 1.6.8
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +30,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.7';
+	var $version = '1.6.8';
 
 	/**
 	 * Used as prefix for options entry
@@ -199,7 +199,6 @@ class WP_Collapse_O_Matic {
 			'filter' => $options['filter_content'],
 			'tabindex' => $options['tabindex']
 		), $atts));
-		
 		if(!empty($cid)){
 			$args = array(
 				'post_type'	=> 'expand-element',
@@ -227,20 +226,25 @@ class WP_Collapse_O_Matic {
 					
 					//content
 					if(get_the_content()){
-						if(empty($filter)){
+						if(empty($filter) || $filter == 'false'){
 							$content = get_the_content();
 						}else{
 							$content = apply_filters( 'the_content', get_the_content() );
-							//$content = str_replace( ']]>', ']]&gt;', $content );
+							$content = str_replace( ']]>', ']]&gt;', $content );
 						}
 					}
 				}
 			}
 			wp_reset_postdata();
 		}
-		else if(!empty($filter)){
-			$content = apply_filters( 'the_content', $content );
-			$content = str_replace( ']]>', ']]&gt;', $content );
+		else{
+			if(empty($filter) || $filter == 'false'){
+				$content = do_shortcode($content);
+			}
+			else{
+				$content = apply_filters( 'the_content', $content );
+				$content = str_replace( ']]>', ']]&gt;', $content );
+			}
 		}
 		
 		$ewo = '';
@@ -289,7 +293,14 @@ class WP_Collapse_O_Matic {
 		}
 			
 		if($excerpt){
-			$excerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $excerpt));
+			$excerpt = str_replace($placeholder_arr, $swapout_arr, $excerpt);
+			if(empty($filter) || $filter == 'false'){
+				$excerpt = do_shortcode($excerpt);
+			}
+			else{
+				$excerpt = apply_filters( 'the_content', $excerpt );
+				$excerpt = str_replace( ']]>', ']]&gt;', $excerpt );
+			}
 			
 			if($targpos == 'inline'){
 				$excerpt .= $eDiv;
@@ -303,7 +314,14 @@ class WP_Collapse_O_Matic {
 			}
 			//swapexcerpt
 			if($swapexcerpt !== false){
-				$swapexcerpt = do_shortcode(str_replace($placeholder_arr, $swapout_arr, $swapexcerpt));
+				$swapexcerpt = str_replace($placeholder_arr, $swapout_arr, $swapexcerpt);
+				if(empty($filter) || $filter == 'false'){
+					$swapexcerpt = do_shortcode($swapexcerpt);
+				}
+				else{
+					$swapexcerpt = apply_filters( 'the_content', $swapexcerpt );
+					$swapexcerpt = str_replace( ']]>', ']]&gt;', $swapexcerpt );
+				}
 				$nibble .= '<'.$excerpttag.' id="swapexcerpt-'.$id.'" style="display:none;">'.$swapexcerpt.'</'.$excerpttag.'>';
 			}
 		}
