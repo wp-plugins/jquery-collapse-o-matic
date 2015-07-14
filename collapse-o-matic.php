@@ -5,7 +5,7 @@ Text Domain: colomat
 Domain Path: /languages
 Plugin URI: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Description: Collapse-O-Matic adds an [expand] shortcode that wraps content into a lovely, jQuery collapsible div.
-Version: 1.6.10
+Version: 1.6.11
 Author: twinpictures, baden03
 Author URI: http://twinpictures.de/
 License: GPL2
@@ -30,7 +30,7 @@ class WP_Collapse_O_Matic {
 	 * Current version
 	 * @var string
 	 */
-	var $version = '1.6.10';
+	var $version = '1.6.11';
 
 	/**
 	 * Used as prefix for options entry
@@ -136,8 +136,10 @@ class WP_Collapse_O_Matic {
 		}
 
 		//css
-		wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.6' );
-		wp_enqueue_style( 'collapseomatic-css' );
+		if ($this->options['style'] !== 'none') {
+			wp_register_style( 'collapseomatic-css', plugins_url('/'.$this->options['style'].'_style.css', __FILE__) , array (), '1.6' );
+			wp_enqueue_style( 'collapseomatic-css' );
+		}
 	}
 
 	/**
@@ -451,7 +453,8 @@ class WP_Collapse_O_Matic {
 											}
 											$st_array = array(
 												__('Light', 'colomat') => 'light',
-												__('Dark', 'colomat') => 'dark'
+												__('Dark', 'colomat') => 'dark',
+												__('None', 'colomat') => 'none'
 											);
 											foreach( $st_array as $key => $value){
 												$selected = '';
@@ -462,7 +465,7 @@ class WP_Collapse_O_Matic {
 											}
 										?>
 										</select>
-										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds.', 'colomat'); ?></span></label>
+										<br /><span class="description"><?php _e('Select Light for sites with lighter backgrounds. Select Dark for sites with darker backgrounds. Select None to handle styling yourself.', 'colomat'); ?></span></label>
 									</td>
 								</tr>
 

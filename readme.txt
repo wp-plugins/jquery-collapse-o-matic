@@ -5,7 +5,7 @@ Donate link: http://plugins.twinpictures.de/plugins/collapse-o-matic/
 Tags: collapse, expand, collapsible, expandable, expandable content, collapsable content, shortcode, hidden, hide, display, accordion, accordion, jQuery, javascript, roll-your-own, twinpictures, read me, read more, more, plugin oven
 Requires at least: 3.9
 Tested up to: 4.2.2
-Stable tag: 1.6.10
+Stable tag: 1.6.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +50,11 @@ No. Not even close.
 
 == Changelog ==
 
+= 1.6.11 =
+* added css to remove the border on focus
+
 = 1.6.10 =
-* add styles and jQuery for accessibility: focus/keyboard navigation
+* added styles and jQuery for accessibility: focus/keyboard navigation
 
 = 1.6.9 =
 * added catch-all callback for jetpack’s infinite-scroll
@@ -293,9 +296,5 @@ Fixed auto-expand of urls with id-anchors
 
 == Upgrade Notice ==
 
-= 1.6.10 =
-* add styles and jQuery for accessibility: focus/keyboard navigation
-
-= 1.6.9 =
-* works with jetpack’s infinite-scroll
-* fix: XSS Vulnerability
+= 1.6.11 =
+* the plugin has been turned up to 11… but the focus borders have been turned down to 0.
